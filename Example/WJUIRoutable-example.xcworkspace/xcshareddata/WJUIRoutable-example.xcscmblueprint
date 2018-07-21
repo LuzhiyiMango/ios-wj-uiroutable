@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "46CF44B66A0DD9810CED829CF51B706DFCB8B35D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "36451429404F73E43C04F9B098B797F733A4CD2E" : 0,
+    "46CF44B66A0DD9810CED829CF51B706DFCB8B35D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3B1A067E-D244-42A7-A1AF-6A616381A7FA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "36451429404F73E43C04F9B098B797F733A4CD2E" : "iOS-WJUIRoutable",
+    "46CF44B66A0DD9810CED829CF51B706DFCB8B35D" : "WJUIRoutable\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "WJUIRoutable-example",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Example\/WJUIRoutable-example.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.coding.net\/halayun\/iOS-WJUIRoutable.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "36451429404F73E43C04F9B098B797F733A4CD2E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/gitlab.jucaicat.net\/iOS-Framework\/WJUIRoutable.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "46CF44B66A0DD9810CED829CF51B706DFCB8B35D"
+    }
+  ]
+}

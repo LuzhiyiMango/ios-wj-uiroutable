@@ -1,0 +1,26 @@
+PODS:
+  - WJCommon/Core (1.4.3):
+    - WJJSON
+    - WJLoggingAPI
+  - WJCommon/Utils (1.4.3):
+    - WJJSON
+    - WJLoggingAPI
+  - WJConfig (1.0)
+  - WJJSON (1.0.2)
+  - WJLoggingAPI (1.0)
+
+DEPENDENCIES:
+  - WJCommon/Core
+  - WJCommon/Utils
+  - WJConfig
+  - WJLoggingAPI
+
+SPEC CHECKSUMS:
+  WJCommon: 0c938531d39493f4d279d4bcb6e895185f07f703
+  WJConfig: a907d4e3708d3906f14457ac1abe35a4a8d39dcb
+  WJJSON: 0f4aae4c7eb8d168e968f636bd17256580915f89
+  WJLoggingAPI: baf950e1a755c322cbb6dafbe57d17c629dad20f
+
+PODFILE CHECKSUM: 598d16dc45d09efd1b4708eaf6a25aae8bef35e3
+
+COCOAPODS: 1.2.0.beta.1

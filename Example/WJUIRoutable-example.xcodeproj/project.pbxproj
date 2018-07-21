@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D363C201C755C570050075B /* WJRouterOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D363C191C755C570050075B /* WJRouterOptions.m */; };
+		3D363C211C755C570050075B /* WJRouterParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D363C1B1C755C570050075B /* WJRouterParams.m */; };
+		3D363C221C755C570050075B /* WJUIRoutable.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D363C1D1C755C570050075B /* WJUIRoutable.m */; };
+		3D78A9531BE77AA300A7178E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78A9521BE77AA300A7178E /* main.m */; };
+		3D78A9561BE77AA300A7178E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78A9551BE77AA300A7178E /* AppDelegate.m */; };
+		3D78A9591BE77AA300A7178E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78A9581BE77AA300A7178E /* ViewController.m */; };
+		3D78A95E1BE77AA300A7178E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D78A95D1BE77AA300A7178E /* Images.xcassets */; };
+		3D78A9611BE77AA300A7178E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D78A95F1BE77AA300A7178E /* LaunchScreen.xib */; };
+		3D78A9791BE77BA800A7178E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78A9781BE77BA800A7178E /* BaseViewController.m */; };
+		3D78A98A1BE77DB400A7178E /* A1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78A9891BE77DB400A7178E /* A1ViewController.m */; };
+		3D78A98D1BE77DD300A7178E /* A2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D78A98C1BE77DD300A7178E /* A2ViewController.m */; };
+		4A4CB0ED11D5A7615DFEC6A7 /* libPods-WJUIRoutable-example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA1C5A93156C278BFE4A604 /* libPods-WJUIRoutable-example.a */; };
+		604C34A31CEABC5000CDBE1D /* WJUIRoutable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 604C34A21CEABC5000CDBE1D /* WJUIRoutable.podspec */; };
+		606B27931ED2D0EF009A4213 /* WJUIRoutableConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B27921ED2D0EF009A4213 /* WJUIRoutableConfig.m */; };
+		C14CCDFE1D7C3C5B0093BF23 /* A3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14CCDFD1D7C3C5B0093BF23 /* A3ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3D363C121C755C570050075B /* IWJRouterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWJRouterViewController.h; sourceTree = "<group>"; };
+		3D363C131C755C570050075B /* IWJRouterViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWJRouterViewControllerDelegate.h; sourceTree = "<group>"; };
+		3D363C181C755C570050075B /* WJRouterOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJRouterOptions.h; sourceTree = "<group>"; };
+		3D363C191C755C570050075B /* WJRouterOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJRouterOptions.m; sourceTree = "<group>"; };
+		3D363C1A1C755C570050075B /* WJRouterParams.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJRouterParams.h; sourceTree = "<group>"; };
+		3D363C1B1C755C570050075B /* WJRouterParams.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJRouterParams.m; sourceTree = "<group>"; };
+		3D363C1C1C755C570050075B /* WJUIRoutable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJUIRoutable.h; sourceTree = "<group>"; };
+		3D363C1D1C755C570050075B /* WJUIRoutable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJUIRoutable.m; sourceTree = "<group>"; };
+		3D78A94D1BE77AA300A7178E /* WJUIRoutable-example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WJUIRoutable-example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D78A9511BE77AA300A7178E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D78A9521BE77AA300A7178E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3D78A9541BE77AA300A7178E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3D78A9551BE77AA300A7178E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3D78A9571BE77AA300A7178E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3D78A9581BE77AA300A7178E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3D78A95D1BE77AA300A7178E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3D78A9601BE77AA300A7178E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3D78A9771BE77BA800A7178E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		3D78A9781BE77BA800A7178E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		3D78A9881BE77DB400A7178E /* A1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A1ViewController.h; sourceTree = "<group>"; };
+		3D78A9891BE77DB400A7178E /* A1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A1ViewController.m; sourceTree = "<group>"; };
+		3D78A98B1BE77DD300A7178E /* A2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A2ViewController.h; sourceTree = "<group>"; };
+		3D78A98C1BE77DD300A7178E /* A2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A2ViewController.m; sourceTree = "<group>"; };
+		482FA42CD4652EC2DD900E76 /* Pods-WJUIRoutable-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WJUIRoutable-example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WJUIRoutable-example/Pods-WJUIRoutable-example.debug.xcconfig"; sourceTree = "<group>"; };
+		604C34A21CEABC5000CDBE1D /* WJUIRoutable.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = WJUIRoutable.podspec; path = ../WJUIRoutable.podspec; sourceTree = "<group>"; };
+		606B27901ED2CF4A009A4213 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		606B27911ED2D0EF009A4213 /* WJUIRoutableConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJUIRoutableConfig.h; sourceTree = "<group>"; };
+		606B27921ED2D0EF009A4213 /* WJUIRoutableConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJUIRoutableConfig.m; sourceTree = "<group>"; };
+		606B27961ED2DCA0009A4213 /* IWJRouterURLFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWJRouterURLFormater.h; sourceTree = "<group>"; };
+		8733203653D2EA47769719FA /* Pods-WJUIRoutable-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WJUIRoutable-example.release.xcconfig"; path = "Pods/Target Support Files/Pods-WJUIRoutable-example/Pods-WJUIRoutable-example.release.xcconfig"; sourceTree = "<group>"; };
+		BEA1C5A93156C278BFE4A604 /* libPods-WJUIRoutable-example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WJUIRoutable-example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C14CCDFC1D7C3C5B0093BF23 /* A3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A3ViewController.h; sourceTree = "<group>"; };
+		C14CCDFD1D7C3C5B0093BF23 /* A3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = A3ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3D78A94A1BE77AA300A7178E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A4CB0ED11D5A7615DFEC6A7 /* libPods-WJUIRoutable-example.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D363C101C755C570050075B /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3D363C111C755C570050075B /* Api */,
+				3D363C151C755C570050075B /* Core */,
+			);
+			name = Classes;
+			path = ../Classes;
+			sourceTree = "<group>";
+		};
+		3D363C111C755C570050075B /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				606B27911ED2D0EF009A4213 /* WJUIRoutableConfig.h */,
+				606B27921ED2D0EF009A4213 /* WJUIRoutableConfig.m */,
+				3D363C121C755C570050075B /* IWJRouterViewController.h */,
+				606B27961ED2DCA0009A4213 /* IWJRouterURLFormater.h */,
+				3D363C131C755C570050075B /* IWJRouterViewControllerDelegate.h */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		3D363C151C755C570050075B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3D363C181C755C570050075B /* WJRouterOptions.h */,
+				3D363C191C755C570050075B /* WJRouterOptions.m */,
+				3D363C1A1C755C570050075B /* WJRouterParams.h */,
+				3D363C1B1C755C570050075B /* WJRouterParams.m */,
+				3D363C1C1C755C570050075B /* WJUIRoutable.h */,
+				3D363C1D1C755C570050075B /* WJUIRoutable.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3D78A9441BE77AA300A7178E = {
+			isa = PBXGroup;
+			children = (
+				606B27901ED2CF4A009A4213 /* README.md */,
+				604C34A21CEABC5000CDBE1D /* WJUIRoutable.podspec */,
+				3D363C101C755C570050075B /* Classes */,
+				3D78A94F1BE77AA300A7178E /* WJUIRoutable-example */,
+				3D78A94E1BE77AA300A7178E /* Products */,
+				EBCB6735D24185E4F9DEC3F6 /* Pods */,
+				B7923BDBD77D5CF07AFD2DA6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		3D78A94E1BE77AA300A7178E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3D78A94D1BE77AA300A7178E /* WJUIRoutable-example.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D78A94F1BE77AA300A7178E /* WJUIRoutable-example */ = {
+			isa = PBXGroup;
+			children = (
+				3D78A9761BE77B8600A7178E /* ViewControllers */,
+				3D78A9541BE77AA300A7178E /* AppDelegate.h */,
+				3D78A9551BE77AA300A7178E /* AppDelegate.m */,
+				3D78A9571BE77AA300A7178E /* ViewController.h */,
+				3D78A9581BE77AA300A7178E /* ViewController.m */,
+				3D78A95D1BE77AA300A7178E /* Images.xcassets */,
+				3D78A95F1BE77AA300A7178E /* LaunchScreen.xib */,
+				3D78A9501BE77AA300A7178E /* Supporting Files */,
+			);
+			path = "WJUIRoutable-example";
+			sourceTree = "<group>";
+		};
+		3D78A9501BE77AA300A7178E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3D78A9511BE77AA300A7178E /* Info.plist */,
+				3D78A9521BE77AA300A7178E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3D78A9761BE77B8600A7178E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3D78A9771BE77BA800A7178E /* BaseViewController.h */,
+				3D78A9781BE77BA800A7178E /* BaseViewController.m */,
+				3D78A9881BE77DB400A7178E /* A1ViewController.h */,
+				3D78A9891BE77DB400A7178E /* A1ViewController.m */,
+				3D78A98B1BE77DD300A7178E /* A2ViewController.h */,
+				3D78A98C1BE77DD300A7178E /* A2ViewController.m */,
+				C14CCDFC1D7C3C5B0093BF23 /* A3ViewController.h */,
+				C14CCDFD1D7C3C5B0093BF23 /* A3ViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B7923BDBD77D5CF07AFD2DA6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BEA1C5A93156C278BFE4A604 /* libPods-WJUIRoutable-example.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EBCB6735D24185E4F9DEC3F6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				482FA42CD4652EC2DD900E76 /* Pods-WJUIRoutable-example.debug.xcconfig */,
+				8733203653D2EA47769719FA /* Pods-WJUIRoutable-example.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3D78A94C1BE77AA300A7178E /* WJUIRoutable-example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3D78A9701BE77AA300A7178E /* Build configuration list for PBXNativeTarget "WJUIRoutable-example" */;
+			buildPhases = (
+				C7E381623379500569AFDB2D /* [CP] Check Pods Manifest.lock */,
+				3D78A9491BE77AA300A7178E /* Sources */,
+				3D78A94A1BE77AA300A7178E /* Frameworks */,
+				3D78A94B1BE77AA300A7178E /* Resources */,
+				AC8D28CA881A676D9BA1C930 /* [CP] Embed Pods Frameworks */,
+				6D4C3BB23E93A166FA85E873 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WJUIRoutable-example";
+			productName = "WJUIRoutable-example";
+			productReference = 3D78A94D1BE77AA300A7178E /* WJUIRoutable-example.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3D78A9451BE77AA300A7178E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = WJ;
+				TargetAttributes = {
+					3D78A94C1BE77AA300A7178E = {
+						CreatedOnToolsVersion = 6.4;
+					};
+				};
+			};
+			buildConfigurationList = 3D78A9481BE77AA300A7178E /* Build configuration list for PBXProject "WJUIRoutable-example" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3D78A9441BE77AA300A7178E;
+			productRefGroup = 3D78A94E1BE77AA300A7178E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D78A94C1BE77AA300A7178E /* WJUIRoutable-example */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3D78A94B1BE77AA300A7178E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D78A9611BE77AA300A7178E /* LaunchScreen.xib in Resources */,
+				3D78A95E1BE77AA300A7178E /* Images.xcassets in Resources */,
+				604C34A31CEABC5000CDBE1D /* WJUIRoutable.podspec in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6D4C3BB23E93A166FA85E873 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WJUIRoutable-example/Pods-WJUIRoutable-example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC8D28CA881A676D9BA1C930 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WJUIRoutable-example/Pods-WJUIRoutable-example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7E381623379500569AFDB2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3D78A9491BE77AA300A7178E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D363C221C755C570050075B /* WJUIRoutable.m in Sources */,
+				3D78A9591BE77AA300A7178E /* ViewController.m in Sources */,
+				3D78A9791BE77BA800A7178E /* BaseViewController.m in Sources */,
+				3D363C211C755C570050075B /* WJRouterParams.m in Sources */,
+				3D363C201C755C570050075B /* WJRouterOptions.m in Sources */,
+				3D78A9561BE77AA300A7178E /* AppDelegate.m in Sources */,
+				606B27931ED2D0EF009A4213 /* WJUIRoutableConfig.m in Sources */,
+				3D78A9531BE77AA300A7178E /* main.m in Sources */,
+				C14CCDFE1D7C3C5B0093BF23 /* A3ViewController.m in Sources */,
+				3D78A98A1BE77DB400A7178E /* A1ViewController.m in Sources */,
+				3D78A98D1BE77DD300A7178E /* A2ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3D78A95F1BE77AA300A7178E /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3D78A9601BE77AA300A7178E /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3D78A96E1BE77AA300A7178E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3D78A96F1BE77AA300A7178E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3D78A9711BE77AA300A7178E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 482FA42CD4652EC2DD900E76 /* Pods-WJUIRoutable-example.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "WJUIRoutable-example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3D78A9721BE77AA300A7178E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8733203653D2EA47769719FA /* Pods-WJUIRoutable-example.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "WJUIRoutable-example/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3D78A9481BE77AA300A7178E /* Build configuration list for PBXProject "WJUIRoutable-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D78A96E1BE77AA300A7178E /* Debug */,
+				3D78A96F1BE77AA300A7178E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3D78A9701BE77AA300A7178E /* Build configuration list for PBXNativeTarget "WJUIRoutable-example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3D78A9711BE77AA300A7178E /* Debug */,
+				3D78A9721BE77AA300A7178E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3D78A9451BE77AA300A7178E /* Project object */;
+}

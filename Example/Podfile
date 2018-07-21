@@ -1,0 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+source 'http://gitlab.jucaicat.net/iOS-Framework/Specs.git'
+platform :ios, '7.0'
+
+inhibit_all_warnings!
+
+target :'WJUIRoutable-example' do
+
+pod 'WJCommon/Core'
+pod 'WJCommon/Utils'
+pod 'WJLoggingAPI'
+pod 'WJConfig'
+
+end
