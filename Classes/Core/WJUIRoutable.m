@@ -28,7 +28,7 @@ static WJUIRoutable *sharedObject;
 @interface WJUIRoutable ()
 @property (readwrite, nonatomic, strong) NSMutableDictionary *routes;
 @property (nonatomic, strong) id<IWJRouterURLFormater> routerURLFormater;
-@property(nonatomic, strong) NSHashTable *fallbackTable;
+@property(nonatomic, strong) NSHashTable *returnStack;
 @end
 
 @implementation WJUIRoutable
@@ -599,9 +599,7 @@ static WJUIRoutable *sharedObject;
     return params;
 }
 
-/**
- *  初始化
- */
+//初始化
 -(void) singleInit {
     self.routes = [[NSMutableDictionary alloc] init];
     self.ignoresExceptions = YES;
@@ -609,7 +607,7 @@ static WJUIRoutable *sharedObject;
     if (formatClazz) {
         self.routerURLFormater = [[formatClazz alloc] init];
     }
-    self.fallbackTable = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsWeakMemory capacity:100];
+    self.returnStack = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsWeakMemory capacity:0];
 }
 
 +(instancetype)sharedInstance {

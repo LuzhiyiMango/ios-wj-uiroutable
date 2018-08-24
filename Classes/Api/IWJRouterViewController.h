@@ -34,6 +34,9 @@ extern NSString * const WJRouterUrl;
  */
 @property(nonatomic, strong) NSDictionary *routerParams;
 
+
+@property(nonatomic, copy) NSString *returnKey;
+
 /**
  *  路由视图控制器初始化方法
  *
@@ -42,5 +45,7 @@ extern NSString * const WJRouterUrl;
  */
 -(instancetype) initWithURL:(NSString*) url routerParams:(NSDictionary*) params;
 
+//实例化一个路由试图控制器
++(instancetype)wjInstanceRouterViewController:(NSString*)url routerParams:(NSDictionary*) params;
 
 @end

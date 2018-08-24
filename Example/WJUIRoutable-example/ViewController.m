@@ -11,17 +11,35 @@
 
 @interface ViewController ()
 
+@property(nonatomic, strong) NSHashTable *table;
+
 @end
 
 @implementation ViewController
 
 -(void) btnOnClicked:(id) sender {
-    [[WJUIRoutable sharedInstance] open:@"a1viewcontroller" animated:YES];
+//    [[WJUIRoutable sharedInstance] open:@"a1viewcontroller" animated:YES];
+    NSLog(@"btnOnClicked: %i", (int)[self.table count]);
+    NSLog(@"btnOnClicked: %i", (int)[[self.table allObjects] count]);
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"viewDidAppear: %i", (int)[self.table count]);
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"ViewController";
+    
+    self.table = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsWeakMemory capacity:0];
+    
+    for (int i=0; i<100; i++) {
+        [self.table addObject:[ViewController new]];
+        NSLog(@"i:%i  %i", i, (int)[self.table count]);
+    }
+    NSLog(@"%i", (int)[self.table count]);
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.view addSubview:btn];
