@@ -16,6 +16,7 @@
 #import "WJRouterParams.h"
 
 @implementation WJRouterParams
+
 - (instancetype)initWithRouterOptions: (WJRouterOptions *)routerOptions openParams: (NSDictionary *)openParams extraParams: (NSDictionary *)extraParams{
     self = [super init];
     if (self) {
@@ -32,6 +33,7 @@
     [controllerParams addEntriesFromDictionary:self.openParams];
     return controllerParams;
 }
+
 - (NSDictionary *)getControllerParams {
     return [self controllerParams];
 }

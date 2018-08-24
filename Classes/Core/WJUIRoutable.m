@@ -28,9 +28,7 @@ static WJUIRoutable *sharedObject;
 @interface WJUIRoutable ()
 @property (readwrite, nonatomic, strong) NSMutableDictionary *routes;
 @property (nonatomic, strong) id<IWJRouterURLFormater> routerURLFormater;
-//回退节点
-@property (nonatomic, weak) UIViewController<IWJRouterViewController> *returnNode;
-
+@property(nonatomic, strong) NSHashTable *fallbackTable;
 @end
 
 @implementation WJUIRoutable
@@ -43,30 +41,27 @@ static WJUIRoutable *sharedObject;
     return result;
 }
 
-/**
- *  所有的模态视图控制器
- */
--(NSArray*) allModalControllers {
+//所有的模态视图控制器
+-(NSArray*) presentedViewControllers {
     UIViewController *presentingViewController = WJ_UIROUTABLER_APP_WINDOW_ROOT_VIEW_CONTROLLER;
     NSMutableArray *presenteds = [[NSMutableArray alloc] initWithObjects:presentingViewController, nil];
-    BOOL endTag = YES;
-    while (endTag) {
+    while (true) {
         if (presentingViewController.presentedViewController) {
             [presenteds addObject:presentingViewController.presentedViewController];
             presentingViewController = presentingViewController.presentedViewController;
         } else {
-            endTag = NO;
+            break;
         }
     }
     return presenteds;
 }
 
--(UIViewController*) lastModelViewController {
-    return [[self allModalControllers] lastObject];
+-(UIViewController*) topPresentedViewController {
+    return [[self presentedViewControllers] lastObject];
 }
 
-- (UIViewController*)firstModelViewController {
-    return [[self allModalControllers] firstObject];
+- (UIViewController*)bottomPresentedViewController {
+    return [[self presentedViewControllers] firstObject];
 }
 
 /**
@@ -74,7 +69,7 @@ static WJUIRoutable *sharedObject;
  */
 -(UINavigationController*) currentNavigationController {
     UINavigationController *navigationController = nil;
-    NSArray *presentings = [self allModalControllers];
+    NSArray *presentings = [self presentedViewControllers];
     UIViewController *presentingViewController = [presentings lastObject];
     if (presentingViewController == WJ_UIROUTABLER_APP_WINDOW_ROOT_VIEW_CONTROLLER) {
         if ([presentingViewController isKindOfClass:[UITabBarController class]]) {
@@ -137,14 +132,14 @@ static WJUIRoutable *sharedObject;
 - (void) dismiss:(BOOL)animated completion:(UIWJCompletionBlock)completionBlock {
     
     if ([NSThread isMainThread]) {
-        UIViewController *lastModelVC = [self lastModelViewController];
+        UIViewController *lastModelVC = [self topPresentedViewController];
         if (lastModelVC.presentingViewController) {
             [lastModelVC dismissViewControllerAnimated:animated completion:completionBlock];
         }
     } else {
         WJ_BLOCK_WEAK WJUIRoutable *selfObject = self;
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIViewController *lastModelVC = [selfObject lastModelViewController];
+            UIViewController *lastModelVC = [selfObject topPresentedViewController];
             if (lastModelVC.presentingViewController) {
                 [lastModelVC dismissViewControllerAnimated:animated completion:completionBlock];
             }
@@ -154,14 +149,14 @@ static WJUIRoutable *sharedObject;
 - (void) dismissAll:(BOOL)animated completion:(UIWJCompletionBlock)completionBlock {
     
     if ([NSThread isMainThread]) {
-        UIViewController *firstModelVC = [self firstModelViewController];
+        UIViewController *firstModelVC = [self bottomPresentedViewController];
         if (firstModelVC.presentedViewController) {
             [firstModelVC dismissViewControllerAnimated:animated completion:completionBlock];
         }
     } else {
         WJ_BLOCK_WEAK WJUIRoutable *selfObject = self;
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIViewController *firstModelVC = [selfObject firstModelViewController];
+            UIViewController *firstModelVC = [selfObject bottomPresentedViewController];
             if (firstModelVC.presentedViewController) {
                 [firstModelVC dismissViewControllerAnimated:animated completion:completionBlock];
             }
@@ -172,14 +167,13 @@ static WJUIRoutable *sharedObject;
 - (void) dismissAtIndex:(NSUInteger) index animated:(BOOL)animated completion:(UIWJCompletionBlock)completionBlock {
     
     if ([NSThread isMainThread]) {
-        NSArray *modals = [self allModalControllers];
+        NSArray *modals = [self presentedViewControllers];
         if ([modals count] > index) {
             [modals[index] dismissViewControllerAnimated:animated completion:completionBlock];
         }
     } else {
-        WJ_BLOCK_WEAK WJUIRoutable *selfObject = self;
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSArray *modals = [selfObject allModalControllers];
+            NSArray *modals = [self presentedViewControllers];
             if ([modals count] > index) {
                 [modals[index] dismissViewControllerAnimated:animated completion:completionBlock];
             }
@@ -198,8 +192,8 @@ static WJUIRoutable *sharedObject;
             } else if(nav.presentingViewController) {
                 [nav dismissViewControllerAnimated:animated completion:NULL];
             }
-        } else if ([[self allModalControllers] count] > 0) {
-            [[self lastModelViewController] dismissViewControllerAnimated:animated completion:NULL];
+        } else if ([[self presentedViewControllers] count] > 0) {
+            [[self topPresentedViewController] dismissViewControllerAnimated:animated completion:NULL];
         }
     } else {
         WJ_BLOCK_WEAK WJUIRoutable *selfObject = self;
@@ -211,8 +205,8 @@ static WJUIRoutable *sharedObject;
                 } else if(nav.presentingViewController) {
                     [nav dismissViewControllerAnimated:animated completion:NULL];
                 }
-            } else if ([[selfObject allModalControllers] count] > 0) {
-                [[self lastModelViewController] dismissViewControllerAnimated:animated completion:NULL];
+            } else if ([[selfObject presentedViewControllers] count] > 0) {
+                [[self topPresentedViewController] dismissViewControllerAnimated:animated completion:NULL];
             }
         });
     }
@@ -221,7 +215,7 @@ static WJUIRoutable *sharedObject;
 -(void)closeAll:(BOOL)animated {
     
     if ([NSThread isMainThread]) {
-        NSArray *modals = [self allModalControllers];
+        NSArray *modals = [self presentedViewControllers];
         if ([modals count] > 1) {
             [[modals firstObject] dismissViewControllerAnimated:animated completion:NULL];
         } else {
@@ -229,13 +223,12 @@ static WJUIRoutable *sharedObject;
             [nav popToRootViewControllerAnimated:animated];
         }
     } else {
-        WJ_BLOCK_WEAK WJUIRoutable *selfObject = self;
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSArray *modals = [selfObject allModalControllers];
+            NSArray *modals = [self presentedViewControllers];
             if ([modals count] > 1) {
                 [[modals firstObject] dismissViewControllerAnimated:animated completion:NULL];
             } else {
-                UINavigationController *nav = [selfObject currentNavigationController];
+                UINavigationController *nav = [self currentNavigationController];
                 [nav popToRootViewControllerAnimated:animated];
             }
         });
@@ -331,59 +324,59 @@ static WJUIRoutable *sharedObject;
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"telprompt://%@",tel]]];
     }
 }
--(void)settingReturnNode:(UIViewController<IWJRouterViewController> *)returnNode {
-    self.returnNode = returnNode;
-}
+//-(void)settingReturnNode:(UIViewController<IWJRouterViewController> *)returnNode {
+//    self.returnNode = returnNode;
+//}
 
--(BOOL)openReturnNode:(BOOL)animated {
-    BOOL result = NO;
-    if (_returnNode) {
-        if (_returnNode == WJ_UIROUTABLER_APP_WINDOW_ROOT_VIEW_CONTROLLER) {
-            [WJ_UIROUTABLER_APP_WINDOW_ROOT_VIEW_CONTROLLER dismissViewControllerAnimated:animated completion:NULL];
-            result = YES;
-        } else {
-            NSArray *allModels = [ self allModalControllers];
-            for (UIViewController *model in allModels) {
-                if ([model isKindOfClass:[UITabBarController class]]) {
-                    UIViewController *selectedVC = [(UITabBarController*)model selectedViewController];
-                    if (selectedVC == _returnNode) {
-                        if ([model presentedViewController]) {
-                            [model dismissViewControllerAnimated:animated completion:NULL];
-                            result = YES;
-                            break;
-                        }
-                    } else if ([selectedVC isKindOfClass:[UINavigationController class]] && [[selectedVC childViewControllers] containsObject:_returnNode]) {
-                        if ([model presentedViewController]) {
-                            [model dismissViewControllerAnimated:animated completion:NULL];
-                        }
-                        [(UINavigationController*)selectedVC popToViewController:_returnNode animated:animated];
-                        result = YES;
-                        break;
-                    }
-                } else if ([model isKindOfClass:[UINavigationController class]]) {
-                    if ([[model childViewControllers] containsObject:_returnNode]) {
-                        if ([model presentedViewController]) {
-                            [model dismissViewControllerAnimated:animated completion:NULL];
-                        }
-                        [(UINavigationController*)model popToViewController:_returnNode animated:animated];
-                        result = YES;
-                        break;
-                    }
-                } else if ([model isKindOfClass:[UIViewController class]]) {
-                    if (model == _returnNode) {
-                        if ([model presentedViewController]) {
-                            [model dismissViewControllerAnimated:animated completion:NULL];
-                        }
-                        result = YES;
-                        break;
-                    }
-                }
-            }
-        }
-        _returnNode = nil;
-    }
-    return result;
-}
+//-(BOOL)openReturnNode:(BOOL)animated {
+//    BOOL result = NO;
+//    if (_returnNode) {
+//        if (_returnNode == WJ_UIROUTABLER_APP_WINDOW_ROOT_VIEW_CONTROLLER) {
+//            [WJ_UIROUTABLER_APP_WINDOW_ROOT_VIEW_CONTROLLER dismissViewControllerAnimated:animated completion:NULL];
+//            result = YES;
+//        } else {
+//            NSArray *allModels = [ self presentedViewControllers];
+//            for (UIViewController *model in allModels) {
+//                if ([model isKindOfClass:[UITabBarController class]]) {
+//                    UIViewController *selectedVC = [(UITabBarController*)model selectedViewController];
+//                    if (selectedVC == _returnNode) {
+//                        if ([model presentedViewController]) {
+//                            [model dismissViewControllerAnimated:animated completion:NULL];
+//                            result = YES;
+//                            break;
+//                        }
+//                    } else if ([selectedVC isKindOfClass:[UINavigationController class]] && [[selectedVC childViewControllers] containsObject:_returnNode]) {
+//                        if ([model presentedViewController]) {
+//                            [model dismissViewControllerAnimated:animated completion:NULL];
+//                        }
+//                        [(UINavigationController*)selectedVC popToViewController:_returnNode animated:animated];
+//                        result = YES;
+//                        break;
+//                    }
+//                } else if ([model isKindOfClass:[UINavigationController class]]) {
+//                    if ([[model childViewControllers] containsObject:_returnNode]) {
+//                        if ([model presentedViewController]) {
+//                            [model dismissViewControllerAnimated:animated completion:NULL];
+//                        }
+//                        [(UINavigationController*)model popToViewController:_returnNode animated:animated];
+//                        result = YES;
+//                        break;
+//                    }
+//                } else if ([model isKindOfClass:[UIViewController class]]) {
+//                    if (model == _returnNode) {
+//                        if ([model presentedViewController]) {
+//                            [model dismissViewControllerAnimated:animated completion:NULL];
+//                        }
+//                        result = YES;
+//                        break;
+//                    }
+//                }
+//            }
+//        }
+//        _returnNode = nil;
+//    }
+//    return result;
+//}
 
 - (void)openExternal:(NSString *)url {
     WJLogDebug(@"打开外部链接:%@",url);
@@ -426,7 +419,7 @@ static WJUIRoutable *sharedObject;
     
     if (controller) {
         if ([options isModal]) {
-            NSArray *modals = [self allModalControllers];
+            NSArray *modals = [self presentedViewControllers];
             id presentingVC = [modals lastObject];
             
             if ([controller isKindOfClass:[UINavigationController class]]) {
@@ -510,7 +503,7 @@ static WJUIRoutable *sharedObject;
     NSString *fullURL = [self getFullURL:url];
     
     NSMutableDictionary *mutableExtraParams = [[NSMutableDictionary alloc] init];
-    [mutableExtraParams setObject:url forKey:WJ_ROUTER_URL_KEY];
+    [mutableExtraParams setObject:url forKey:WJRouterUrl];
     
     //额外参数
     if ([extraParams count] > 0) {
@@ -530,7 +523,6 @@ static WJUIRoutable *sharedObject;
     }
     
     //得到完整url
-    
     NSArray *givenParts = fullURL.pathComponents;
     NSArray *legacyParts = [fullURL componentsSeparatedByString:@"/"];
     if ([legacyParts count] != [givenParts count]) {
@@ -613,12 +605,11 @@ static WJUIRoutable *sharedObject;
 -(void) singleInit {
     self.routes = [[NSMutableDictionary alloc] init];
     self.ignoresExceptions = YES;
-    
-    
     Class formatClazz = [[WJUIRoutableConfig sharedInstance] routerURLFormatter];
     if (formatClazz) {
         self.routerURLFormater = [[formatClazz alloc] init];
     }
+    self.fallbackTable = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsWeakMemory capacity:100];
 }
 
 +(instancetype)sharedInstance {

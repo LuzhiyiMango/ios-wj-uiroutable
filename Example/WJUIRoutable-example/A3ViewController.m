@@ -16,7 +16,7 @@
 @implementation A3ViewController
 
 -(void) btnOnClicked:(id) sender {
-    [[WJUIRoutable sharedInstance] openReturnNode:NO];
+//    [[WJUIRoutable sharedInstance] openReturnNode:NO];
 }
 
 - (void)viewDidLoad {

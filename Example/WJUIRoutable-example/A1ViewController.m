@@ -13,7 +13,7 @@
 
 
 -(void) btnOnClicked:(id) sender {
-    [[WJUIRoutable sharedInstance] settingReturnNode:self];
+//    [[WJUIRoutable sharedInstance] settingReturnNode:self];
     [[WJUIRoutable sharedInstance] open:@"a2viewcontroller" animated:YES];
 }
 

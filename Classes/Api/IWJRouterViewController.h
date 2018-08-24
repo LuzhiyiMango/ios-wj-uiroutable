@@ -16,6 +16,9 @@
 #import <Foundation/Foundation.h>
 #import "IWJRouterViewControllerDelegate.h"
 
+//路由参数中包含的路由url
+extern NSString * const WJRouterUrl;
+
 /**
  路由视图控制器接口
  */
@@ -27,13 +30,17 @@
 @property (nonatomic, weak) id<IWJRouterViewControllerDelegate> routerDelegate;
 
 /**
+ *  路由参数
+ */
+@property(nonatomic, strong) NSDictionary *routerParams;
+
+/**
  *  路由视图控制器初始化方法
  *
  *  @param params   参数
- *  @param delegate 委托
- *
  *  @return 视图控制器
  */
--(id) initWithURL:(NSString*) URL routerParams:(NSDictionary*) params;
+-(instancetype) initWithURL:(NSString*) url routerParams:(NSDictionary*) params;
+
 
 @end

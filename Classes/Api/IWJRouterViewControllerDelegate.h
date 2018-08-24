@@ -1,23 +1,14 @@
 //
-//  IWJRouterViewControllerCallback.h
+//  IWJRouterViewControllerDelegate.h
+//  WJUIRoutable-example
 //
-//   __      __   _____
-//  /\ \  __/\ \ /\___ \
-//  \ \ \/\ \ \ \\/__/\ \
-//   \ \ \ \ \ \ \  _\ \ \
-//    \ \ \_/ \_\ \/\ \_\ \
-//     \ `\___x___/\ \____/
-//      '\/__//__/  \/___/
-//
-//  Created by Yunhai.Wu on 15/8/21.
-//  Copyright (c) 2015年 WJ. All rights reserved.
+//  Created by ada on 2018/8/24.
+//  Copyright © 2018年 WJ. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-/**
- *  委托回调
- */
+//路由委托
 @protocol IWJRouterViewControllerDelegate <NSObject>
 
 /**

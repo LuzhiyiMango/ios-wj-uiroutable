@@ -15,14 +15,10 @@
 
 #import <Foundation/Foundation.h>
 #import "WJRouterOptions.h"
-#import "IWJRouterViewController.h"
-#import "IWJRouterViewControllerDelegate.h"
+#import "UIViewController+Router.h"
 
-
-#define WJ_ROUTER_URL_KEY   @"routerUrlKey"
 
 typedef void(^UIWJCompletionBlock)();
-
 
 /**
  *  UI 路由器
@@ -115,12 +111,11 @@ typedef void(^UIWJCompletionBlock)();
 /**
  *  设置回退节点
  */
-- (void)settingReturnNode:(UIViewController<IWJRouterViewController>*)returnNode;
-
+//- (void)settingReturnNode:(UIViewController<IWJRouterViewController>*)returnNode;
 /**
  *  打开回退节点
  */
-- (BOOL)openReturnNode:(BOOL)animated;
+//- (BOOL)openReturnNode:(BOOL)animated;
 
 /**
  *  打开外部url

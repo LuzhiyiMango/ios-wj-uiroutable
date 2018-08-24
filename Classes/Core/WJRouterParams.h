@@ -25,6 +25,11 @@
 @property (readwrite, nonatomic, strong) NSDictionary *extraParams;
 //控制器参数
 @property (readwrite, nonatomic, strong) NSDictionary *controllerParams;
+
+//初始化方法
 - (id)initWithRouterOptions: (WJRouterOptions *)routerOptions openParams: (NSDictionary *)openParams extraParams: (NSDictionary *)extraParams;
+
+//得到所有参数
 - (NSDictionary *)getControllerParams;
+
 @end
