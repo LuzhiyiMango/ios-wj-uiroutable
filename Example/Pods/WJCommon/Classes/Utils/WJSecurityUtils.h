@@ -15,18 +15,21 @@
 
 #import <Foundation/Foundation.h>
 
-#define WJ_SECURITY_MD2(data)               [WJSecurityUtils MD2:data]
-#define WJ_SECURITY_MD4(data)               [WJSecurityUtils MD4:data]
-#define WJ_SECURITY_MD5(data)               [WJSecurityUtils MD5:data]
-#define WJ_SECURITY_SHA1(data)              [WJSecurityUtils SHA1:data]
-#define WJ_SECURITY_SHA224(data)            [WJSecurityUtils SHA224:data]
-#define WJ_SECURITY_SHA256(data)            [WJSecurityUtils SHA256:data]
-#define WJ_SECURITY_SHA384(data)            [WJSecurityUtils SHA384:data]
-#define WJ_SECURITY_SHA512(data)            [WJSecurityUtils SHA512:data]
-#define WJ_SECURITY_HEXADEDIMAL(data)       [WJSecurityUtils hexadedimalString:data]
-#define WJ_SECURITY_ENCODING_BASE64(data)   [WJSecurityUtils base64:data]
-#define WJ_SECURITY_DECODE_BASE64(base64)   [WJSecurityUtils dataWithBase64:base64]
-#define WJ_SECURITY_HMACMD5(content,key)    [WJSecurityUtils HMACMD5:content secretKey:key]
+#define WJ_SECURITY_MD2(D)                  [WJSecurityUtils MD2:D]
+#define WJ_SECURITY_MD4(D)                  [WJSecurityUtils MD4:D]
+#define WJ_SECURITY_MD5(D)                  [WJSecurityUtils MD5:D]
+#define WJ_SECURITY_SHA1(D)                 [WJSecurityUtils SHA1:D]
+#define WJ_SECURITY_SHA224(D)               [WJSecurityUtils SHA224:D]
+#define WJ_SECURITY_SHA256(D)               [WJSecurityUtils SHA256:D]
+#define WJ_SECURITY_SHA384(D)               [WJSecurityUtils SHA384:D]
+#define WJ_SECURITY_SHA512(D)               [WJSecurityUtils SHA512:D]
+#define WJ_SECURITY_HEXADEDIMAL(D)          [WJSecurityUtils hexadedimalString:D]
+#define WJ_SECURITY_ENCODING_BASE64(D)      [WJSecurityUtils base64:D]
+#define WJ_SECURITY_DECODE_BASE64(D)        [WJSecurityUtils dataWithBase64:D]
+#define WJ_SECURITY_HMACMD5(C,K)            [WJSecurityUtils HMACMD5:C secretKey:K]
+#define WJ_SECURITY_HMACSHA256(C,K)         [WJSecurityUtils HMACSHA256:C secretKey:K]
+#define WJ_SECURITY_DES_ENCRY(C,K)          [WJSecurityUtils desEncrypt:C secretKey:K]
+#define WJ_SECURITY_DES_DECRY(C,K)          [WJSecurityUtils desDecrypt:C secretKey:K]
 /**
  *  安全工具类
  */
@@ -67,11 +70,14 @@
  *
  *  @return 字符串
  */
-+ (NSString *) hexadedimalString:(NSData*) data;
++ (NSString *)hexadedimalString:(NSData*) data;
 
-+ (NSString *) base64:(NSData*) data;
++ (NSString *)base64:(NSData*) data;
 
-+ (NSData *) dataWithBase64:(NSString *)base64String;
++ (NSData *)dataWithBase64:(NSString *)base64String;
+
+
+
 
 /**
  *  HMAC MD5
@@ -81,6 +87,22 @@
  *
  *  @return 结果
  */
-+ (NSString *) HMACMD5:(NSString*) content secretKey:(NSString*) secret;
++ (NSString *)HMACMD5:(NSString*)content secretKey:(NSString*)secret;
+
+/**
+ *  HMAC SHA256
+ *
+ *  @param content 需要加密内容
+ *  @param secret  密钥
+ *
+ *  @return 结果
+ */
++ (NSString *)HMACSHA256:(NSString*)content secretKey:(NSString*)secret;
+
+//des加密
++(NSData *)desEncrypt:(NSData *)data secretKey:(NSString *)secretKey;
+
+//des解密
++(NSData *)desDecrypt:(NSData *)data secretKey:(NSString *)secretKey;
 
 @end

@@ -16,10 +16,18 @@
 #import "WJUIRoutable.h"
 #import "WJRouterParams.h"
 #import "WJURLUtils.h"
-#import "IWJRouterURLFormater.h"
 #import "WJUIRoutableConfig.h"
-#import "WJLoggingMacros.h"
-#import "WJCommon.h"
+#import "WJLoggingAPI.h"
+#import "WJConfig.h"
+#import "IWJRouterMatcher.h"
+#import "WJRouterMatcher.h"
+#import "IWJRouterInterceptor.h"
+
+
+#define WJ_UI_ROUTER_CONFIG_KEY                         @"WJUIRoutable"
+#define WJ_UI_ROUTER_CONFIG_ENABLED_LINK_PARAMS_KEY     @"enabledLinkParams"
+#define WJ_UI_ROUTER_CONFIG_DEFAULT_NAV_CONTROLLER      @"defaultNavigationController"
+#define WJ_UI_ROUTER_CONFIG_INTERCEPTORS                @"interceptors"
 
 #define WJ_UIROUTABLER_APP_WINDOW_ROOT_VIEW_CONTROLLER [[[[UIApplication sharedApplication] delegate] window] rootViewController]
 
@@ -27,17 +35,30 @@ static WJUIRoutable *sharedObject;
 
 @interface WJUIRoutable ()
 @property (readwrite, nonatomic, strong) NSMutableDictionary *routes;
-@property (nonatomic, strong) id<IWJRouterURLFormater> routerURLFormater;
+//@property (nonatomic, strong) id<IWJRouterURLFormater> routerURLFormater;
 @property(nonatomic, strong) NSHashTable *returnStack;
+
+
+/**
+ 路由匹配
+ */
+@property(nonatomic, strong) id<IWJRouterMatcher> routerMatcher;
+
+
+/**
+ 拦截器
+ */
+@property(nonatomic, strong) NSMutableArray<IWJRouterInterceptor> *routerInterceptors;
+
 @end
 
 @implementation WJUIRoutable
 
 -(NSString *)formatRouterURL:(NSString *)routerURL {
     NSString *result = routerURL;
-    if (routerURL && _routerURLFormater) {
-        result = [_routerURLFormater formatRouterURL:routerURL];
-    }
+//    if (routerURL && _routerURLFormater) {
+//        result = [_routerURLFormater formatRouterURL:routerURL];
+//    }
     return result;
 }
 
@@ -409,8 +430,8 @@ static WJUIRoutable *sharedObject;
     WJRouterOptions *options = params.routerOptions;
     
     if (options.callback) {
-        WJRouterOpenCallback callback = options.callback;
-        callback([params controllerParams]);
+//        WJRouterOpenCallback callback = options.callback;
+//        callback([params controllerParams]);
         return;
     }
     
@@ -477,7 +498,8 @@ static WJUIRoutable *sharedObject;
 }
 
 - (NSDictionary*)paramsOfUrl:(NSString*)url {
-    return [[self routerParamsForUrl:url] controllerParams];
+//    return [[self routerParamsForUrl:url] controllerParams];
+    return nil;
 }
 
 -(NSString*) getFullURL:(NSString*) URL {
@@ -491,9 +513,9 @@ static WJUIRoutable *sharedObject;
 - (WJRouterParams *)routerParamsForUrl:(NSString *)url extraParams: (NSDictionary *)extraParams {
     if (!url) {
         //if we wait, caching this as key would throw an exception
-        if (_ignoresExceptions) {
-            return nil;
-        }
+//        if (_ignoresExceptions) {
+//            return nil;
+//        }
         WJLogError(@"URL 不能为空");
         @throw [NSException exceptionWithName:@"RouteNotFoundException"
                                        reason:@"URL 不能为空"
@@ -557,29 +579,29 @@ static WJUIRoutable *sharedObject;
 }
 
 //创建一个视图控制器（并将参数赋值给此控制器）
-- (UIViewController *)controllerForRouterParams:(WJRouterParams *)params url:(NSString*) url {
+- (UIViewController*)controllerForRouterParams:(WJRouterParams *)params url:(NSString*) url {
 
     UIViewController *controller = nil;
-    if (params) {
-        //得到视图控制器class
-        Class controllerClass = params.routerOptions.openClass;
-        if ([controllerClass conformsToProtocol:@protocol(IWJRouterViewController)]) {
-            controller = [[controllerClass alloc] initWithURL:url routerParams:[params controllerParams]];
-            controller.modalTransitionStyle = params.routerOptions.transitionStyle;
-            controller.modalPresentationStyle = params.routerOptions.presentationStyle;
-        } else {
-            if (!_ignoresExceptions) {
-                WJLogError(@"视图控制器没有实现IWJRouterViewController协议");
-                @throw [NSException exceptionWithName:@"RoutableInitializerNotFound"
-                                               reason:@"视图控制器没有实现IWJRouterViewController协议"
-                                             userInfo:nil];
-            }
-        }
-    }
+//    if (params) {
+//        //得到视图控制器class
+//        Class controllerClass = params.routerOptions.openClass;
+//        if ([controllerClass conformsToProtocol:@protocol(IWJRouterViewController)]) {
+//            controller = [[controllerClass alloc] initWithURL:url routerParams:[params controllerParams]];
+//            controller.modalTransitionStyle = params.routerOptions.transitionStyle;
+//            controller.modalPresentationStyle = params.routerOptions.presentationStyle;
+//        } else {
+//            if (!_ignoresExceptions) {
+//                WJLogError(@"视图控制器没有实现IWJRouterViewController协议");
+//                @throw [NSException exceptionWithName:@"RoutableInitializerNotFound"
+//                                               reason:@"视图控制器没有实现IWJRouterViewController协议"
+//                                             userInfo:nil];
+//            }
+//        }
+//    }
     return controller;
 }
 
--(NSDictionary *)paramsForUrlComponents:(NSArray *)givenUrlComponents
+-(NSDictionary*)paramsForUrlComponents:(NSArray *)givenUrlComponents
                     routerUrlComponents:(NSArray *)routerUrlComponents {
     
     __block NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -599,22 +621,47 @@ static WJUIRoutable *sharedObject;
     return params;
 }
 
-//初始化
--(void) singleInit {
-    self.routes = [[NSMutableDictionary alloc] init];
-    self.ignoresExceptions = YES;
-    Class formatClazz = [[WJUIRoutableConfig sharedInstance] routerURLFormatter];
-    if (formatClazz) {
-        self.routerURLFormater = [[formatClazz alloc] init];
+- (void)performInitialize {
+    NSDictionary *config = [WJConfig dictionaryForKey:WJUIRoutable];
+    NSString *enabledLinkParams = NO;
+    if ([[config objectForKey:WJ_UI_ROUTER_CONFIG_ENABLED_LINK_PARAMS_KEY] isKindOfClass:[NSNumber class]]) {
+        enabledLinkParams = [[config objectForKey:WJ_UI_ROUTER_CONFIG_ENABLED_LINK_PARAMS_KEY] boolValue];
     }
-    self.returnStack = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsWeakMemory capacity:0];
+    Class<UINavigationController> *defaultNavController = Nil;
+    if ([[config objectForKey:WJ_UI_ROUTER_CONFIG_DEFAULT_NAV_CONTROLLER] isKindOfClass:[NSString class]]) {
+        NSString *defaultNavController = config[WJ_UI_ROUTER_CONFIG_DEFAULT_NAV_CONTROLLER];
+        Class clazz = NSClassFromString(defaultNavController);
+        if ([clazz isKindOfClass:[UINavigationController class]]) defaultNavController = clazz;
+    }
+    self.routerMatcher = [[WJRouterMatcher alloc] initWithEnabledLinkParams:enabledLinkParams defaultNavigationController:defaultNavController];
+    self.routerInterceptors = [[NSMutableArray alloc] init];
+    if ([config[WJ_UI_ROUTER_CONFIG_INTERCEPTORS] isKindOfClass:[NSArray class]]) {
+        NSArray *interceptorNames = config[WJ_UI_ROUTER_CONFIG_INTERCEPTORS];
+        for (NSString *n in interceptorNames) {
+            Class clazz = NSClassFromString(n);
+            if ([clazz conformsToProtocol:@protocol(IWJRouterInterceptor)]) [self.routerInterceptors addObject:[[clazz alloc] init]];
+        }
+    }
+    
+    
+    
+    //执行初始化
+    //执行初始化
+    //执行初始化
+    //执行初始化
+    //执行初始化
+    //执行初始化
+    //执行初始化
+    //执行初始化
+    //执行初始化
+    //执行初始化
 }
 
 +(instancetype)sharedInstance {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedObject = [[WJUIRoutable alloc] init];
-        [sharedObject singleInit];
+        [sharedObject performInitialize];
     });
     return sharedObject;
 }

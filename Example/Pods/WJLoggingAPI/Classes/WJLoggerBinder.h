@@ -1,5 +1,5 @@
 //
-//  WJLoggerFactory.h
+//  WJLoggerBinder.h
 //
 //   __      __   _____
 //  /\ \  __/\ \ /\___ \
@@ -9,21 +9,19 @@
 //     \ `\___x___/\ \____/
 //      '\/__//__/  \/___/
 //
-//  Created by 吴云海 on 15-12-13.
+//  Created by yunhai.wu on 15-12-13.
 //  Copyright (c) 2015年 WJ. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "IWJLogger.h"
+#import "IWJLoggerFactory.h"
+
+@interface WJLoggerBinder : NSObject
+
 
 /**
- *  日志记录器工厂
+ 日志工厂
  */
-@interface WJLoggerFactory : NSObject
-
-/**
- *  得到日志记录器
- */
-+(id<IWJLogger>) getLogger;
++(id<IWJLoggerFactory>)getLoggerFactory;
 
 @end

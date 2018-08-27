@@ -28,9 +28,4 @@ AS_SINGLETON(WJUIRoutableConfig)
  */
 @property(nonatomic, readonly) Class defaultNavigationControllerClass;
 
-/**
- *  默认导航视图控制器
- */
-@property(nonatomic, readonly) Class routerURLFormatter;
-
 @end

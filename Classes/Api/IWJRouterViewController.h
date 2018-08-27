@@ -34,18 +34,19 @@ extern NSString * const WJRouterUrl;
  */
 @property(nonatomic, strong) NSDictionary *routerParams;
 
-
-@property(nonatomic, copy) NSString *returnKey;
-
 /**
- *  路由视图控制器初始化方法
- *
- *  @param params   参数
- *  @return 视图控制器
+    路由视图控制器初始化方法
+    @param
+        url:路由url
+        params:路由参数
+    @return 视图控制器
  */
--(instancetype) initWithURL:(NSString*) url routerParams:(NSDictionary*) params;
+- (instancetype)initWithURL:(NSString*) url routerParams:(NSDictionary*) params;
 
-//实例化一个路由试图控制器
-+(instancetype)wjInstanceRouterViewController:(NSString*)url routerParams:(NSDictionary*) params;
+
+@optional
+
+//路由节点初始化完成，在此方法中可获取到 routerParams、routerDelegate参数
+- (void)routerInitializedCompletion;
 
 @end

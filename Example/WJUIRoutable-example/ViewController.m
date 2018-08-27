@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 #import "WJUIRoutable.h"
+#import "A1ViewController.h"
+#import "A2ViewController.h"
+#import "A3ViewController.h"
 
 @interface ViewController ()
 
@@ -18,9 +21,9 @@
 @implementation ViewController
 
 -(void) btnOnClicked:(id) sender {
-//    [[WJUIRoutable sharedInstance] open:@"a1viewcontroller" animated:YES];
-    NSLog(@"btnOnClicked: %i", (int)[self.table count]);
-    NSLog(@"btnOnClicked: %i", (int)[[self.table allObjects] count]);
+    [[WJUIRoutable sharedInstance] open:@"a1viewcontroller" animated:YES];
+//    NSLog(@"btnOnClicked: %i", (int)[self.table count]);
+//    NSLog(@"btnOnClicked: %i", (int)[[self.table allObjects] count]);
     
 }
 
@@ -32,6 +35,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"ViewController";
+    
+    
+    [[WJUIRoutable sharedInstance] map:@"a1viewcontroller" toController:[A1ViewController class]];
+    [[WJUIRoutable sharedInstance] map:@"a2viewcontroller" toController:[A2ViewController class]];
+    [[WJUIRoutable sharedInstance] map:@"a3viewcontroller" toController:[A3ViewController class]];
     
     self.table = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsWeakMemory capacity:0];
     

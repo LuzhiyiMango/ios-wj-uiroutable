@@ -4,8 +4,9 @@
     
 ### CocoaPods 安装
 
+    source：https://github.com/yunhaiwu/ios-wj-framework-cocoapods-specs.git
+
     pod WJCommon
-    
     子包
     pod WJCommon/Core
     pod WJCommon/Utils

@@ -35,10 +35,11 @@ NSString * const WJRouterUrl = @"routerUrl";
 }
 
 #pragma mark IWJRouterViewController
--(instancetype) initWithURL:(NSString*) url routerParams:(NSDictionary*) params {
+- (instancetype)initWithURL:(NSString*) url routerParams:(NSDictionary*) params {
     self = [self init];
     if (self) {
         self.routerParams = params;
+        if ([self respondsToSelector:@selector(routerInitializedCompletion)]) [self routerInitializedCompletion];
     }
     return self;
 }

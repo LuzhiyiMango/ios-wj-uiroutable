@@ -19,6 +19,7 @@
 /**
  *  路由参数
  */
-@property(nonatomic, copy) NSDictionary *routerParams;
+@property(nonatomic, strong) NSDictionary *routerParams;
+
 
 @end

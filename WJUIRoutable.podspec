@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
         score.dependency 'WJUIRoutable/API'
         score.dependency 'WJCommon/Core'
         score.dependency 'WJCommon/Utils'
-        score.dependency 'WJLoggingAPI'
+        score.dependency 'WJLoggingAPI', '>=2.0'
     end
 
 end

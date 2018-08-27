@@ -7,13 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "IWJRouterViewController.h"
+#import "WJUIRoutable.h"
 
-@interface BaseViewController : UIViewController<IWJRouterViewController>
-
-@property (nonatomic, copy) NSDictionary *routerParams;
-
-#pragma mark IWJRouterViewController
-@property (nonatomic, weak) id<IWJRouterViewControllerDelegate> routerDelegate;
+@interface BaseViewController : UIViewController
 
 @end

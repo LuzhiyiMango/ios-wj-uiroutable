@@ -14,25 +14,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WJRouterOptions.h"
+#import "WJRouterParams.h"
 #import "UIViewController+Router.h"
-
 
 typedef void(^UIWJCompletionBlock)();
 
 /**
  *  UI 路由器
- *
- *  注意：UIRoutable打开UI是使用 - (id)initWithURL:routerParams: 初始化，所以如果VC带有XIB，需要重写此方法
  */
 @interface WJUIRoutable : NSObject
-
-/**
- *  忽略异常
- *  Default YES
- */
-@property (readwrite, nonatomic, assign) BOOL ignoresExceptions;
-
 
 /**
  *  导航控制器,回到上一个控制器
@@ -71,7 +61,9 @@ typedef void(^UIWJCompletionBlock)();
  *  @param completionBlock 完成动画block
  */
 - (void) dismissAll:(BOOL)animated completion:(UIWJCompletionBlock)completionBlock;
-- (void) dismissAtIndex:(NSUInteger) index animated:(BOOL)animated completion:(UIWJCompletionBlock)completionBlock;//index 不许大于等于0，index指模态打开的数据控制器集合
+
+//index 不许大于等于0，index指模态打开的数据控制器集合
+- (void) dismissAtIndex:(NSUInteger) index animated:(BOOL)animated completion:(UIWJCompletionBlock)completionBlock;
 
 /**
  *  关闭视图控制器（当导航控制器[viewControllers count] == 1时，执行dismiss:completion: 否则执行 pop:）
@@ -109,15 +101,6 @@ typedef void(^UIWJCompletionBlock)();
 - (void)callTel:(NSString*)tel;
 
 /**
- *  设置回退节点
- */
-//- (void)settingReturnNode:(UIViewController<IWJRouterViewController>*)returnNode;
-/**
- *  打开回退节点
- */
-//- (BOOL)openReturnNode:(BOOL)animated;
-
-/**
  *  打开外部url
  */
 - (void)openExternal:(NSString *)url;
@@ -126,17 +109,21 @@ typedef void(^UIWJCompletionBlock)();
  *  打开url
  */
 - (void)open:(NSString *)url;
+
 - (void)open:(NSString *)url animated:(BOOL)animated;
+
 - (void)open:(NSString *)url animated:(BOOL)animated extraParams:(NSDictionary *)extraParams;
+
 - (void)openRoot:(UIViewController*) rootViewController;
 
-//app当前页面导航控制器
--(UINavigationController*) currentNavigationController;
+
 
 /**
- *  得到url中的参数包含链接参数
+ 当前有效导航控制器
  */
-- (NSDictionary*)paramsOfUrl:(NSString*)url;
+-(UINavigationController*) currentAvailableNavigationController;
+
+
 
 +(instancetype) sharedInstance;
 

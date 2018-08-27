@@ -16,20 +16,28 @@
 #import <Foundation/Foundation.h>
 #import "WJRouterOptions.h"
 
+//路由属性
 @interface WJRouterParams : NSObject
-//路由参数
+
+//路由选项参数
 @property (readwrite, nonatomic, strong) WJRouterOptions *routerOptions;
+
+
 //打开参数
 @property (readwrite, nonatomic, strong) NSDictionary *openParams;
+
+
 //额外参数
 @property (readwrite, nonatomic, strong) NSDictionary *extraParams;
-//控制器参数
-@property (readwrite, nonatomic, strong) NSDictionary *controllerParams;
+
+
+//得到路由参数
+- (NSDictionary *)getRouterParams;
+
+//初始化方法
+- (id)initWithRouterOptions: (WJRouterOptions *)routerOptions openParams: (NSDictionary *)openParams;
 
 //初始化方法
 - (id)initWithRouterOptions: (WJRouterOptions *)routerOptions openParams: (NSDictionary *)openParams extraParams: (NSDictionary *)extraParams;
-
-//得到所有参数
-- (NSDictionary *)getControllerParams;
 
 @end

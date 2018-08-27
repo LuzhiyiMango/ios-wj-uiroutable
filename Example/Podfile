@@ -1,5 +1,5 @@
 source 'https://github.com/CocoaPods/Specs.git'
-source 'http://gitlab.jucaicat.net/iOS-Framework/Specs.git'
+source 'https://github.com/yunhaiwu/ios-wj-framework-cocoapods-specs.git'
 platform :ios, '7.0'
 
 inhibit_all_warnings!
@@ -8,7 +8,7 @@ target :'WJUIRoutable-example' do
 
 pod 'WJCommon/Core'
 pod 'WJCommon/Utils'
-pod 'WJLoggingAPI'
-pod 'WJConfig'
+pod 'WJLoggingAPI', '>=2.0'
+pod 'WJConfig', '>=2.0'
 
 end

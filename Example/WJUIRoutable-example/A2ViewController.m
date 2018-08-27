@@ -12,7 +12,7 @@
 @implementation A2ViewController
 
 -(void) btnOnClicked:(id) sender {
-    [[WJUIRoutable sharedInstance] open:@"a3viewcontroller" animated:YES];
+    [[WJUIRoutable sharedInstance] open:@"a3viewcontroller" animated:YES extraParams:@{@"a2":@"a2"}];
 }
 
 -(void)viewDidLoad {

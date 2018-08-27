@@ -17,7 +17,7 @@
 
 @implementation WJRouterParams
 
-- (instancetype)initWithRouterOptions: (WJRouterOptions *)routerOptions openParams: (NSDictionary *)openParams extraParams: (NSDictionary *)extraParams{
+- (instancetype)initWithRouterOptions:(WJRouterOptions *)routerOptions openParams:(NSDictionary *)openParams extraParams: (NSDictionary *)extraParams{
     self = [super init];
     if (self) {
         [self setRouterOptions:routerOptions];
@@ -27,15 +27,21 @@
     return self;
 }
 
-- (NSDictionary *)controllerParams {
-    NSMutableDictionary *controllerParams = [NSMutableDictionary dictionaryWithDictionary:self.routerOptions.defaultParams];
-    [controllerParams addEntriesFromDictionary:self.extraParams];
-    [controllerParams addEntriesFromDictionary:self.openParams];
-    return controllerParams;
+- (instancetype)initWithRouterOptions:(WJRouterOptions *)routerOptions openParams:(NSDictionary *)openParams {
+    self = [super init];
+    if (self) {
+        [self setRouterOptions:routerOptions];
+        [self setOpenParams:openParams];
+    }
+    return self;
 }
 
-- (NSDictionary *)getControllerParams {
-    return [self controllerParams];
+- (NSDictionary *)getRouterParams {
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    if (self.routerOptions.defaultParams) [params addEntriesFromDictionary:self.routerOptions.defaultParams];
+    if (self.extraParams) [params addEntriesFromDictionary:self.extraParams];
+    if (self.openParams) [params addEntriesFromDictionary:self.openParams];
+    return params;
 }
 
 @end

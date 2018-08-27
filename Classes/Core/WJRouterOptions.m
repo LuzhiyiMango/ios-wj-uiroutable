@@ -96,24 +96,4 @@
     return [self routerOptionsForDefaultParams:defaultParams];
 }
 
-- (WJRouterOptions *)modal {
-    [self setModal:YES];
-    return self;
-}
-
-- (WJRouterOptions *)withPresentationStyle:(UIModalPresentationStyle)style {
-    [self setPresentationStyle:style];
-    return self;
-}
-
-- (WJRouterOptions *)withTransitionStyle:(UIModalTransitionStyle)style {
-    [self setTransitionStyle:style];
-    return self;
-}
-
-- (WJRouterOptions *)forDefaultParams:(NSDictionary *)defaultParams {
-    [self setDefaultParams:defaultParams];
-    return self;
-}
-
 @end

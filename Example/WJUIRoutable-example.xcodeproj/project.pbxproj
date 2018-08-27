@@ -21,6 +21,7 @@
 		4A4CB0ED11D5A7615DFEC6A7 /* libPods-WJUIRoutable-example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA1C5A93156C278BFE4A604 /* libPods-WJUIRoutable-example.a */; };
 		604C34A31CEABC5000CDBE1D /* WJUIRoutable.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 604C34A21CEABC5000CDBE1D /* WJUIRoutable.podspec */; };
 		606B27931ED2D0EF009A4213 /* WJUIRoutableConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 606B27921ED2D0EF009A4213 /* WJUIRoutableConfig.m */; };
+		60A015A42132A8DF001A7D70 /* WJRouterMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 60A015A32132A8DF001A7D70 /* WJRouterMatcher.m */; };
 		60BE7D94212FA084003B264B /* UIViewController+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 60BE7D93212FA084003B264B /* UIViewController+Router.m */; };
 		C14CCDFE1D7C3C5B0093BF23 /* A3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14CCDFD1D7C3C5B0093BF23 /* A3ViewController.m */; };
 /* End PBXBuildFile section */
@@ -53,11 +54,13 @@
 		606B27901ED2CF4A009A4213 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		606B27911ED2D0EF009A4213 /* WJUIRoutableConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJUIRoutableConfig.h; sourceTree = "<group>"; };
 		606B27921ED2D0EF009A4213 /* WJUIRoutableConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJUIRoutableConfig.m; sourceTree = "<group>"; };
-		606B27961ED2DCA0009A4213 /* IWJRouterURLFormater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWJRouterURLFormater.h; sourceTree = "<group>"; };
+		60A015A12132A7A5001A7D70 /* IWJRouterMatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IWJRouterMatcher.h; sourceTree = "<group>"; };
+		60A015A22132A8DF001A7D70 /* WJRouterMatcher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJRouterMatcher.h; sourceTree = "<group>"; };
+		60A015A32132A8DF001A7D70 /* WJRouterMatcher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJRouterMatcher.m; sourceTree = "<group>"; };
 		60BE7D92212FA084003B264B /* UIViewController+Router.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Router.h"; sourceTree = "<group>"; };
 		60BE7D93212FA084003B264B /* UIViewController+Router.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Router.m"; sourceTree = "<group>"; };
 		60BE7D95212FA182003B264B /* IWJRouterViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IWJRouterViewControllerDelegate.h; sourceTree = "<group>"; };
-		60C69F992123DACD0077047C /* IWJInterceptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IWJInterceptor.h; sourceTree = "<group>"; };
+		60C69F992123DACD0077047C /* IWJRouterInterceptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IWJRouterInterceptor.h; sourceTree = "<group>"; };
 		8733203653D2EA47769719FA /* Pods-WJUIRoutable-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WJUIRoutable-example.release.xcconfig"; path = "Pods/Target Support Files/Pods-WJUIRoutable-example/Pods-WJUIRoutable-example.release.xcconfig"; sourceTree = "<group>"; };
 		BEA1C5A93156C278BFE4A604 /* libPods-WJUIRoutable-example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WJUIRoutable-example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C14CCDFC1D7C3C5B0093BF23 /* A3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = A3ViewController.h; sourceTree = "<group>"; };
@@ -91,8 +94,7 @@
 			children = (
 				606B27911ED2D0EF009A4213 /* WJUIRoutableConfig.h */,
 				606B27921ED2D0EF009A4213 /* WJUIRoutableConfig.m */,
-				606B27961ED2DCA0009A4213 /* IWJRouterURLFormater.h */,
-				60C69F992123DACD0077047C /* IWJInterceptor.h */,
+				60C69F992123DACD0077047C /* IWJRouterInterceptor.h */,
 				3D363C121C755C570050075B /* IWJRouterViewController.h */,
 				60BE7D95212FA182003B264B /* IWJRouterViewControllerDelegate.h */,
 				60BE7D92212FA084003B264B /* UIViewController+Router.h */,
@@ -110,6 +112,9 @@
 				3D363C1B1C755C570050075B /* WJRouterParams.m */,
 				3D363C1C1C755C570050075B /* WJUIRoutable.h */,
 				3D363C1D1C755C570050075B /* WJUIRoutable.m */,
+				60A015A12132A7A5001A7D70 /* IWJRouterMatcher.h */,
+				60A015A22132A8DF001A7D70 /* WJRouterMatcher.h */,
+				60A015A32132A8DF001A7D70 /* WJRouterMatcher.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -202,8 +207,6 @@
 				3D78A9491BE77AA300A7178E /* Sources */,
 				3D78A94A1BE77AA300A7178E /* Frameworks */,
 				3D78A94B1BE77AA300A7178E /* Resources */,
-				AC8D28CA881A676D9BA1C930 /* [CP] Embed Pods Frameworks */,
-				6D4C3BB23E93A166FA85E873 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,49 +263,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6D4C3BB23E93A166FA85E873 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WJUIRoutable-example/Pods-WJUIRoutable-example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AC8D28CA881A676D9BA1C930 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WJUIRoutable-example/Pods-WJUIRoutable-example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C7E381623379500569AFDB2D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WJUIRoutable-example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -314,6 +290,7 @@
 			files = (
 				3D363C221C755C570050075B /* WJUIRoutable.m in Sources */,
 				3D78A9591BE77AA300A7178E /* ViewController.m in Sources */,
+				60A015A42132A8DF001A7D70 /* WJRouterMatcher.m in Sources */,
 				3D78A9791BE77BA800A7178E /* BaseViewController.m in Sources */,
 				3D363C211C755C570050075B /* WJRouterParams.m in Sources */,
 				3D363C201C755C570050075B /* WJRouterOptions.m in Sources */,

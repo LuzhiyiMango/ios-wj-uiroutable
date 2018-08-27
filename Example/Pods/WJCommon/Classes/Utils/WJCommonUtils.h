@@ -22,5 +22,6 @@
 #import "WJURLUtils.h"
 #import "WJUUIDUtils.h"
 #import "WJValidUtils.h"
+#import "WJAmountFormatUtils.h"
 
 #endif

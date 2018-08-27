@@ -33,20 +33,28 @@ static NSDictionary *objectTypeDict;
     cacheJsonObjectDescs = [[NSMutableDictionary alloc] init];
     ignorePropertyNames = [[NSSet alloc] initWithObjects:@"superclass",@"hash",@"debugDescription",@"description", nil];
     numberTypeNames = [[NSSet alloc] initWithObjects:@"B",@"i",@"I",@"d",@"D",@"c",@"C",@"f",@"l",@"L",@"s",@"S",@"q",@"Q", nil];
-    objectTypeDict = @{@"NSString":@(WJObjectTypeString),
-                  @"NSNumber":@(WJObjectTypeNumber),
-                  @"NSSet":@(WJObjectTypeSet),
-                  @"NSArray":@(WJObjectTypeArray),
-                  @"NSDictionary":@(WJObjectTypeDictionary),
-                  @"NSDate":@(WJObjectTypeDate),};
+//    objectTypeDict = @{@"NSString":@(WJObjectTypeString),
+//                  @"NSNumber":@(WJObjectTypeNumber),
+//                  @"NSSet":@(WJObjectTypeSet),
+//                  @"NSArray":@(WJObjectTypeArray),
+//                  @"NSDictionary":@(WJObjectTypeDictionary),
+//                  @"NSDate":@(WJObjectTypeDate),};
 }
 
 +(WJObjectType)getType:(id)value {
     WJObjectType t = WJObjectTypeObject;
-    NSString *typeName = NSStringFromClass([value class]);
-    NSNumber *n = objectTypeDict[typeName];
-    if (n) {
-        t = [n integerValue];
+    if ([value isKindOfClass:[NSString class]]) {
+        t = WJObjectTypeString;
+    } else if ([value isKindOfClass:[NSNumber class]]) {
+        t = WJObjectTypeNumber;
+    } else if ([value isKindOfClass:[NSArray class]]) {
+        t = WJObjectTypeArray;
+    } else if ([value isKindOfClass:[NSDictionary class]]) {
+        t = WJObjectTypeDictionary;
+    } else if ([value isKindOfClass:[NSSet class]]) {
+        t = WJObjectTypeSet;
+    } else if ([value isKindOfClass:[NSDate class]]) {
+        t = WJObjectTypeDate;
     } else if ([[value class] conformsToProtocol:@protocol(IWJJSONObject)]) {
         t = WJObjectTypeCustom;
     }

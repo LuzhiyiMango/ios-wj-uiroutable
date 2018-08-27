@@ -16,6 +16,7 @@
 #import "WJSecurityUtils.h"
 #include <CommonCrypto/CommonDigest.h>
 #include <CommonCrypto/CommonHMAC.h>
+#include <CommonCrypto/CommonCryptor.h>
 #include <sys/types.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -204,6 +205,86 @@ static const short sam_base64DecodingTable[256] = {
         }
         return [NSString stringWithUTF8String:hexmac];
     }
+    return nil;
+}
+
++(NSString *)HMACSHA256:(NSString *)content secretKey:(NSString *)secret {
+    if (content) {
+        
+        CCHmacContext ctx;
+        const char *key = [secret UTF8String];
+        const char *str = [content UTF8String];
+        unsigned char mac[CC_SHA256_DIGEST_LENGTH];
+        char hexmac[2 * CC_SHA256_DIGEST_LENGTH + 1];
+        char *p;
+        
+        CCHmacInit(&ctx, kCCHmacAlgSHA256, key, strlen(key));
+        CCHmacUpdate(&ctx,str,strlen(str));
+        CCHmacFinal(&ctx, mac);
+        
+        p = hexmac;
+        for (int i=0; i < CC_SHA256_DIGEST_LENGTH; i++) {
+            snprintf(p, 3, "%02x",mac[i]);
+            p += 2;
+        }
+        return [NSString stringWithUTF8String:hexmac];
+    }
+    return nil;
+}
+
+//des加密
++(NSData *)desEncrypt:(NSData*)data secretKey:(NSString*)secretKey {
+    char keyPtr[kCCKeySizeAES256+1];
+    bzero(keyPtr, sizeof(keyPtr));
+    
+    [secretKey getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
+    
+    NSUInteger dataLength = [data length];
+    
+    size_t bufferSize = dataLength + kCCBlockSizeAES128;
+    void *buffer = malloc(bufferSize);
+    
+    size_t numBytesEncrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(kCCEncrypt, kCCAlgorithmDES,
+                                          kCCOptionPKCS7Padding | kCCOptionECBMode,
+                                          keyPtr, kCCBlockSizeDES,
+                                          NULL,
+                                          [data bytes], dataLength,
+                                          buffer, bufferSize,
+                                          &numBytesEncrypted);
+    if (cryptStatus == kCCSuccess) {
+        return [NSData dataWithBytesNoCopy:buffer length:numBytesEncrypted];
+    }
+    
+    free(buffer);
+    return nil;
+}
+
++(NSData *)desDecrypt:(NSData*)data secretKey:(NSString*)secretKey {
+    char keyPtr[kCCKeySizeAES256+1];
+    bzero(keyPtr, sizeof(keyPtr));
+    
+    [secretKey getCString:keyPtr maxLength:sizeof(keyPtr) encoding:NSUTF8StringEncoding];
+    
+    NSUInteger dataLength = [data length];
+    
+    size_t bufferSize = dataLength + kCCBlockSizeAES128;
+    void *buffer = malloc(bufferSize);
+    
+    size_t numBytesDecrypted = 0;
+    CCCryptorStatus cryptStatus = CCCrypt(kCCDecrypt, kCCAlgorithmDES,
+                                          kCCOptionPKCS7Padding | kCCOptionECBMode,
+                                          keyPtr, kCCBlockSizeDES,
+                                          NULL,
+                                          [data bytes], dataLength,
+                                          buffer, bufferSize,
+                                          &numBytesDecrypted);
+    
+    if (cryptStatus == kCCSuccess) {
+        return [NSData dataWithBytesNoCopy:buffer length:numBytesDecrypted];
+    }
+    
+    free(buffer);
     return nil;
 }
 
