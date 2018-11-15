@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-    s.name             = "WJUIRoutable"
-    s.version          = '2.0'
+    s.name             = "WJRouter"
+    s.version          = '1.0'
     s.summary          = "url导航模块."
 
     s.description      = <<-DESC
@@ -22,21 +22,12 @@ Pod::Spec.new do |s|
 
     s.frameworks = 'UIKit', 'Foundation'
 
-    s.subspec 'API' do |sapi|
-        sapi.source_files = 'Classes/Api/*'
-        sapi.public_header_files = 'Classes/Api/*.h'
+    s.source_files = 'Classes/*'
+    s.public_header_files = 'Classes/*.h'
 
-        sapi.dependency 'WJConfig'
-    end
-
-    s.subspec 'Core' do |score|
-        score.source_files = 'Classes/Core/*'
-        score.public_header_files = 'Classes/Core/*.h'
-
-        score.dependency 'WJUIRoutable/API'
-        score.dependency 'WJCommon/Core'
-        score.dependency 'WJCommon/Utils'
-        score.dependency 'WJLoggingAPI', '>=2.0'
-    end
+    s.dependency 'WJConfig'
+    s.dependency 'WJCommon/Core'
+    s.dependency 'WJCommon/Utils'
+    s.dependency 'WJLoggingAPI', '>=2.0'
 
 end

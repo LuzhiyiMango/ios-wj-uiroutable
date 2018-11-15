@@ -1,18 +1,15 @@
 //
-//  UIViewController+Router.m
+//  UIViewController+WJRouter.m
 //  WJUIRoutable-example
 //
-//  Created by ada on 2018/8/24.
+//  Created by ada on 2018/11/13.
 //  Copyright © 2018年 WJ. All rights reserved.
 //
 
-#import "UIViewController+Router.h"
+#import "UIViewController+WJRouter.h"
 #import <objc/runtime.h>
 
-NSString * const WJRouterUrl = @"routerUrl";
-
-@implementation UIViewController (Router)
-
+@implementation UIViewController (WJRouter)
 
 -(void)setRouterParams:(NSDictionary *)routerParams {
     [self willChangeValueForKey:@"routerParams"];
@@ -21,7 +18,7 @@ NSString * const WJRouterUrl = @"routerUrl";
 }
 
 -(NSDictionary *)routerParams {
-    return objc_getAssociatedObject(self, _cmd);
+    return objc_getAssociatedObject(self, @selector(routerParams));
 }
 
 -(void)setRouterDelegate:(id<IWJRouterViewControllerDelegate>)routerDelegate {
@@ -31,20 +28,22 @@ NSString * const WJRouterUrl = @"routerUrl";
 }
 
 -(id<IWJRouterViewControllerDelegate>)routerDelegate {
-    return objc_getAssociatedObject(self, _cmd);
+    return objc_getAssociatedObject(self, @selector(routerDelegate));
 }
 
 #pragma mark IWJRouterViewController
-- (instancetype)initWithURL:(NSString*) url routerParams:(NSDictionary*) params {
+- (instancetype)initWithRouterParams:(NSDictionary*) params {
     self = [self init];
     if (self) {
         self.routerParams = params;
-        if ([self respondsToSelector:@selector(routerInitializedCompletion)]) [self routerInitializedCompletion];
+        if ([self respondsToSelector:@selector(routerInitializedCompletion)]) {
+            [self routerInitializedCompletion];
+        }
     }
     return self;
 }
 
-//默认实现
+#pragma mark IWJRouterViewControllerDelegate
 -(void)viewController:(UIViewController *)viewController routerParams:(NSDictionary *)params {
     if (self.routerDelegate) [self.routerDelegate viewController:viewController routerParams:params];
 }

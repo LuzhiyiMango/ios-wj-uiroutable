@@ -14,8 +14,7 @@
 //
 
 #import "WJRouterOptions.h"
-#import "IWJRouterViewControllerDelegate.h"
-#import "WJUIRoutableConfig.h"
+#import "WJRouterConfig.h"
 
 @implementation WJRouterOptions
 + (instancetype)routerOptionsWithPresentationStyle: (UIModalPresentationStyle)presentationStyle
@@ -28,13 +27,12 @@
     options.defaultParams = defaultParams;
     options.modal = isModal;
     
-    Class navControllerClazz = [[WJUIRoutableConfig sharedInstance] defaultNavigationControllerClass];
-    if (navControllerClazz) {
+    Class navControllerClazz = [WJRouterConfig defaultNavigationControllerClass];
+    if (Nil != navControllerClazz) {
         options.navigationControllerClass = navControllerClazz;
     } else {
         options.navigationControllerClass = [UINavigationController class];
     }
-    
     return options;
 }
 
@@ -73,27 +71,5 @@
                                             isModal:NO];
 }
 
-+ (instancetype)routerOptionsAsRoot {
-    return [self routerOptionsWithPresentationStyle:UIModalPresentationNone
-                                    transitionStyle:UIModalTransitionStyleCoverVertical
-                                      defaultParams:nil
-                                            isModal:NO];
-}
-
-+ (instancetype)modal {
-    return [self routerOptionsAsModal];
-}
-
-+ (instancetype)withPresentationStyle:(UIModalPresentationStyle)style {
-    return [self routerOptionsWithPresentationStyle:style];
-}
-
-+ (instancetype)withTransitionStyle:(UIModalTransitionStyle)style {
-    return [self routerOptionsWithTransitionStyle:style];
-}
-
-+ (instancetype)forDefaultParams:(NSDictionary *)defaultParams {
-    return [self routerOptionsForDefaultParams:defaultParams];
-}
 
 @end

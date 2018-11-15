@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-//路由委托
+
+/**
+ 路由委托
+ */
 @protocol IWJRouterViewControllerDelegate <NSObject>
 
 /**
- *  试图控制器间回调委托
- *  回调委托
+ *  视图控制器间回调委托
  */
 -(void) viewController:(UIViewController*) viewController routerParams:(NSDictionary*) params;
 

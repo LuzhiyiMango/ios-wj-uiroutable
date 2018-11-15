@@ -7,7 +7,7 @@
 //
 
 #import "A3ViewController.h"
-#import "WJUIRoutable.h"
+#import "WJRouter.h"
 
 @interface A3ViewController ()
 

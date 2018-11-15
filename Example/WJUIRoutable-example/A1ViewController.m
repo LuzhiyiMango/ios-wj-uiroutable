@@ -7,14 +7,14 @@
 //
 
 #import "A1ViewController.h"
-#import "WJUIRoutable.h"
+#import "WJRouter.h"
 
 @implementation A1ViewController
 
 
 -(void) btnOnClicked:(id) sender {
 //    [[WJUIRoutable sharedInstance] settingReturnNode:self];
-    [[WJUIRoutable sharedInstance] open:@"a2viewcontroller" animated:YES extraParams:@{@"a1":@"a1"}];
+    [[WJRouter sharedInstance] open:@"a2viewcontroller" animated:YES extraParams:@{@"a1":@"a1"}];
 }
 
 - (void)viewDidLoad {

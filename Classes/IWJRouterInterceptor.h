@@ -24,7 +24,7 @@
  @param routerUrl 路由链接
  @param params 属性
  @param formatterUrl 如果需要替换url，
- @return 只有YES，才会跳转。如果NO，则放弃跳转
+ @return 是否能跳转
  */
 -(BOOL)preHandle:(NSString*)routerUrl params:(NSDictionary*)params formattedUrl:(NSString**)formattedUrl;
 

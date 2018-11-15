@@ -8,8 +8,6 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "WJUIRoutable.h"
-#import "WJUIRoutableConfig.h"
 
 @interface AppDelegate ()
 
