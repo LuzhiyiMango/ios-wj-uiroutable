@@ -1,11 +1,11 @@
-# WJUIRoutable
+# WJRouter
 
-http 请求组件api
+路由组件
 
 ### CocoaPods 安装
 
 ```
-'pod WJUIRoutable'  or  'pod WJUIRoutable/API'  'pod WJUIRoutable/Core'
+'pod WJRouter'
 ```
 
 ### 要求
@@ -18,31 +18,31 @@ http 请求组件api
 * 在WJConfig配置中心：
 
 ```
-//WJUIRoutable在配置中心名称
-WJUIRoutable : {
+//WJRouter在配置中心名称
+WJRouter : {
     defaultNavigationController:(String)默认导航控制器名称（可为空）
-    routerURLformatter:(String)路由链接格式化器(可为空、插件配置)
+    interceptors:(String)拦截器
 }
 
 ```
 
 ```
 //映射
-[[WJUIRoutable sharedInstance] map:xxxx toController:xxxx];
-[[WJUIRoutable sharedInstance] maps:xxxx toController:xxxx];
-[[WJUIRoutable sharedInstance] map:xxxx toController:xxxx withOptions:xxxx];
-[[WJUIRoutable sharedInstance] maps:xxxx toController:xxxx withOptions:xxxx];
-[[WJUIRoutable sharedInstance] map:xxxx toCallback:xxxx];
-[[WJUIRoutable sharedInstance] maps:xxxx toCallback:xxxx];
-[[WJUIRoutable sharedInstance] map:xxxx toCallback:xxxx withOptions:xxxx];
-[[WJUIRoutable sharedInstance] maps:xxxx toCallback:xxxx withOptions:xxxx];
+[[WJRouter sharedInstance] map:xxxx toController:xxxx];
+[[WJRouter sharedInstance] maps:xxxx toController:xxxx];
+[[WJRouter sharedInstance] map:xxxx toController:xxxx withOptions:xxxx];
+[[WJRouter sharedInstance] maps:xxxx toController:xxxx withOptions:xxxx];
+[[WJRouter sharedInstance] map:xxxx toCallback:xxxx];
+[[WJRouter sharedInstance] maps:xxxx toCallback:xxxx];
+[[WJRouter sharedInstance] map:xxxx toCallback:xxxx withOptions:xxxx];
+[[WJRouter sharedInstance] maps:xxxx toCallback:xxxx withOptions:xxxx];
 
 //打开页面
-[[WJUIRoutable sharedInstance] open:xxxx];
-[[WJUIRoutable sharedInstance] open:xxxx animated:xxxx];
-[[WJUIRoutable sharedInstance] open:xxxx animated:xxxx extraParams:xxxx];
+[[WJRouter sharedInstance] open:xxxx];
+[[WJRouter sharedInstance] open:xxxx animated:xxxx];
+[[WJRouter sharedInstance] open:xxxx animated:xxxx extraParams:xxxx];
 
 //打开外部链接
-[[WJUIRoutable sharedInstance] openExternal:xxxx];
+[[WJRouter sharedInstance] openExternal:xxxx];
 
 ```
