@@ -15,6 +15,9 @@
 
 @property(nonatomic, strong) NSMutableDictionary<NSString*, WJRouterOptions*> *routes;
 
+//拦截器列表
+@property(nonatomic, strong) NSArray *interceptors;
+
 @end
 
 @implementation WJRouterMatcher
@@ -23,6 +26,7 @@
     self = [super init];
     if (self) {
         self.routes = [[NSMutableDictionary alloc] init];
+        self.interceptors = [WJRouterConfig interceptors];
     }
     return self;
 }
@@ -62,41 +66,75 @@
 }
 
 - (NSDictionary*)extractUrlParams:(NSString*)url {
-    if (!url) return nil;
-    NSArray *segments = [url componentsSeparatedByString:@"?"];
-    NSString *paramsSegment = [segments count] == 2 ? paramsSegment = segments[1] : nil;
-    if (paramsSegment) {
-        NSMutableDictionary *result = [NSMutableDictionary dictionary];
-        NSArray *paramItems = [paramsSegment componentsSeparatedByString:@"&"];
-        for (NSString *kvp in paramItems) {
-            if ([kvp length] == 0) continue;
-            NSRange pos = [kvp rangeOfString:@"="];
-            NSString *key;
-            NSString *val;
-            if (pos.location == NSNotFound) {
-                key = [kvp stringByRemovingPercentEncoding];
-                val = @"";
-            } else {
-                key = [[kvp substringToIndex:pos.location] stringByRemovingPercentEncoding];
-                val = [[kvp substringFromIndex:pos.location + pos.length] stringByRemovingPercentEncoding];
+    NSMutableDictionary *result = [NSMutableDictionary new];
+    if (url) {
+        NSArray *segments = [url componentsSeparatedByString:@"?"];
+        [result setObject:segments[0] forKey:WJ_ROUTER_URL_ALIAS];
+        [result setObject:url forKey:WJ_ROUTER_URL_ORIGINAL];
+        NSString *paramsSegment = [segments count] == 2 ? paramsSegment = segments[1] : nil;
+        if (paramsSegment) {
+            NSArray *paramItems = [paramsSegment componentsSeparatedByString:@"&"];
+            for (NSString *kvp in paramItems) {
+                if ([kvp length] == 0) continue;
+                NSRange pos = [kvp rangeOfString:@"="];
+                NSString *key;
+                NSString *val;
+                if (pos.location == NSNotFound) {
+                    key = [kvp stringByRemovingPercentEncoding];
+                    val = @"";
+                } else {
+                    key = [[kvp substringToIndex:pos.location] stringByRemovingPercentEncoding];
+                    val = [[kvp substringFromIndex:pos.location + pos.length] stringByRemovingPercentEncoding];
+                }
+                if (!key || !val) {
+                    continue;
+                }
+                [result setObject:val forKey:key];
             }
-            if (!key || !val) {
-                continue;
-            }
-            [result setObject:val forKey:key];
         }
-        return result;
     }
-    return nil;
+    return result;
+}
+
+-(NSDictionary *)paramsForUrlComponents:(NSArray *)givenUrlComponents
+                    routerUrlComponents:(NSArray *)routerUrlComponents {
+    __block NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [routerUrlComponents enumerateObjectsUsingBlock:
+     ^(NSString *routerComponent, NSUInteger idx, BOOL *stop) {
+         NSString *givenComponent = givenUrlComponents[idx];
+         if ([routerComponent hasPrefix:@":"]) {
+             NSString *key = [routerComponent substringFromIndex:1];
+             [params setObject:givenComponent forKey:key];
+         } else if (![routerComponent isEqualToString:givenComponent]) {
+             params = nil;
+             *stop = YES;
+         }
+     }];
+    return [params copy];
 }
 
 - (WJRouterParams*)match:(NSString*)url {
     if (url) {
-        NSString *path = [url componentsSeparatedByString:@"?"][0];
+        NSDictionary *urlParams = [self extractUrlParams:url];
+        NSString *path = urlParams[WJ_ROUTER_URL_ALIAS];
+        if ([self.interceptors count] > 0) {
+            NSMutableDictionary *p = [[NSMutableDictionary alloc] initWithDictionary:urlParams];
+            for (id<IWJRouterInterceptor> interceptor in self.interceptors) {
+                NSString *formatterUrl = nil;
+                if ([interceptor preHandle:path formattedUrl:&formatterUrl]) {
+                    if (formatterUrl) {
+                        [p setObject:formatterUrl forKey:WJ_ROUTER_URL_ALIAS];
+                        path = formatterUrl;
+                    }
+                } else {
+                    return nil;
+                }
+            }
+            urlParams = [p copy];
+        }
         __block WJRouterParams *openRouterParams = nil;
         WJRouterOptions *options = self.routes[path];
         if (options) {
-            NSDictionary *urlParams = [self extractUrlParams:url];
             openRouterParams = [[WJRouterParams alloc] initWithRouterOptions:options openParams:urlParams];
         } else {
             NSArray *givenParts = path.pathComponents;
@@ -117,28 +155,11 @@
             }];
         }
         if (!openRouterParams && [[self.routes allKeys] containsObject:@"*"]) {
-            openRouterParams = [[WJRouterParams alloc] initWithRouterOptions:_routes[@"*"] openParams:nil];;
+            openRouterParams = [[WJRouterParams alloc] initWithRouterOptions:_routes[@"*"] openParams:urlParams];;
         }
         return openRouterParams;
     }
     return nil;
-}
-
--(NSDictionary *)paramsForUrlComponents:(NSArray *)givenUrlComponents
-                    routerUrlComponents:(NSArray *)routerUrlComponents {
-    __block NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [routerUrlComponents enumerateObjectsUsingBlock:
-     ^(NSString *routerComponent, NSUInteger idx, BOOL *stop) {
-         NSString *givenComponent = givenUrlComponents[idx];
-         if ([routerComponent hasPrefix:@":"]) {
-             NSString *key = [routerComponent substringFromIndex:1];
-             [params setObject:givenComponent forKey:key];
-         } else if (![routerComponent isEqualToString:givenComponent]) {
-             params = nil;
-             *stop = YES;
-         }
-     }];
-    return [params copy];
 }
 
 @end

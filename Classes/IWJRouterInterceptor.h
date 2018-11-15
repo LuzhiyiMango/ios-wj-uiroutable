@@ -22,11 +22,10 @@
 /**
  打开前拦截
  @param routerUrl 路由链接
- @param params 属性
  @param formatterUrl 如果需要替换url，
  @return 是否能跳转
  */
--(BOOL)preHandle:(NSString*)routerUrl params:(NSDictionary*)params formattedUrl:(NSString**)formattedUrl;
+-(BOOL)preHandle:(NSString*)routerUrl formattedUrl:(NSString**)formattedUrl;
 
 /**
  路由完成后

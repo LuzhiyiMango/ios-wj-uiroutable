@@ -111,21 +111,6 @@
     }
 }
 
-//- (BOOL)doInterceptorsPreHandler:(WJRouterParams*)params {
-//    if ([self.interceptors count] > 0) {
-//        for (id<IWJRouterInterceptor> interceptor in self.interceptors) {
-//            NSString *formatterUrl = nil;
-//            if ([interceptor preHandle:[params getRouterParams][WJ_ROUTER_URL_ORIGINAL] params:[params getRouterParams] formattedUrl:&formatterUrl]) {
-//                if (formatterUrl) {
-//                    [params setFormatParams:@{WJ_ROUTER_URL_ALIAS:formatterUrl}];
-//                }
-//            } else {
-//                return NO;
-//            }
-//        }
-//    }
-//    return YES;
-//}
 
 - (void)doInterceptorsAfterCompletion:(WJRouterParams*)params {
     if ([self.interceptors count] > 0) {
