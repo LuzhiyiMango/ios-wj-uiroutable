@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "WJRouterParams.h"
 #import "WJRouterDefines.h"
+#import "WJReturnNode.h"
 
 @interface WJRouterJumper : NSObject
 
@@ -39,5 +40,8 @@
 - (UINavigationController*)currentAvailableNavigationController;
 
 - (UIViewController*)rootViewController;
+
+//后退到指定节点
+- (void)execReturnNode:(WJReturnNode*)returnNode;
 
 @end

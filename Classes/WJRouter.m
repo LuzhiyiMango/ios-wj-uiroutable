@@ -17,6 +17,8 @@
 #import "WJRouterParams.h"
 #import "WJRouterMatcher.h"
 #import "WJRouterJumper.h"
+#import "WJReturnNode.h"
+#import "WJNodeContainer.h"
 
 static WJRouter *sharedObject;
 
@@ -26,6 +28,8 @@ static WJRouter *sharedObject;
 @property(nonatomic, strong) WJRouterMatcher *matcher;
 
 @property(nonatomic, strong) WJRouterJumper *jumper;
+
+@property(nonatomic, strong) WJNodeContainer *returnNodeContainer;
 
 @end
 
@@ -130,6 +134,7 @@ static WJRouter *sharedObject;
 - (void)performInitialize {
     self.matcher = [[WJRouterMatcher alloc] init];
     self.jumper = [[WJRouterJumper alloc] init];
+    self.returnNodeContainer = [[WJNodeContainer alloc] init];
 }
 
 +(instancetype)sharedInstance {
@@ -156,6 +161,22 @@ static WJRouter *sharedObject;
         }
     }
     return sharedObject;
+}
+
+- (void)markedReturn:(NSString*)returnToken viewController:(UIViewController*)viewController {
+    if (viewController && returnToken) {
+        WJReturnNode *node = [WJReturnNode node:viewController token:returnToken];
+        [_returnNodeContainer addNode:node];
+    }
+}
+
+- (void)execReturn:(NSString*)returnToken {
+    WJReturnNode *node = [_returnNodeContainer getNodeAndDel:returnToken];
+    if (node) [_jumper execReturnNode:node];
+}
+
+- (BOOL)containsReturn:(NSString*)returnToken {
+    return [_returnNodeContainer contains:returnToken];
 }
 
 @end

@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IWJNodeElement.h"
 
 /**
  回退节点
  */
-@interface WJReturnNode : NSObject
+@interface WJReturnNode : NSObject<IWJNodeElement>
 
 /**
  路由视图控制器
@@ -21,17 +22,12 @@
 /**
  回退标记
  */
-@property(nonatomic, copy) NSString *nodeTag;
-
-/**
- 检查是否可用
- */
--(BOOL)isAvailable;
+@property(nonatomic, copy) NSString *returnToken;
 
 /**
  实例化一个节点
  */
-+(instancetype)node:(UIViewController*)viewController tag:(NSString*)tag;
++ (instancetype)node:(UIViewController*)viewController token:(NSString*)returnToken;
 
 
 @end

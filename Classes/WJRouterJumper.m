@@ -210,4 +210,22 @@
     return [[[[UIApplication sharedApplication] delegate] window] rootViewController];
 }
 
+-(void)execReturnNode:(WJReturnNode *)returnNode {
+    if ([returnNode isAvailable]) {
+        UIViewController *vc = [returnNode viewController];
+        
+        if ([vc presentedViewController]) {
+            [vc dismissViewControllerAnimated:NO completion:NULL];
+        } else if ([[vc parentViewController] presentedViewController]) {
+            [[vc parentViewController] dismissViewControllerAnimated:NO completion:NULL];
+        }
+        
+        if ([[vc parentViewController] isKindOfClass:[UINavigationController class]]) {
+            if ([[(UINavigationController*)[vc parentViewController] viewControllers] lastObject] != vc) {
+                [(UINavigationController*)[vc parentViewController] popToViewController:vc animated:NO];
+            }
+        }
+    }
+}
+
 @end

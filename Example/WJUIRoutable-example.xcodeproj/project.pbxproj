@@ -21,9 +21,8 @@
 		606A4635219ACBE200AA3CD0 /* WJRouterMatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A461D219ACBE100AA3CD0 /* WJRouterMatcher.m */; };
 		606A4636219ACBE200AA3CD0 /* WJRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A4622219ACBE100AA3CD0 /* WJRouter.m */; };
 		606A4637219ACBE200AA3CD0 /* WJRouterJumper.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A4623219ACBE100AA3CD0 /* WJRouterJumper.m */; };
-		606A4638219ACBE200AA3CD0 /* WJRouterReturnNodeStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A462A219ACBE100AA3CD0 /* WJRouterReturnNodeStack.m */; };
+		606A4638219ACBE200AA3CD0 /* WJNodeContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A462A219ACBE100AA3CD0 /* WJNodeContainer.m */; };
 		606A4639219ACBE200AA3CD0 /* WJReturnNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A462C219ACBE100AA3CD0 /* WJReturnNode.m */; };
-		606A463B219ACBE200AA3CD0 /* WJRouterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A4630219ACBE100AA3CD0 /* WJRouterNode.m */; };
 		606A4641219ACD1C00AA3CD0 /* UIViewController+WJRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A4640219ACD1C00AA3CD0 /* UIViewController+WJRouter.m */; };
 		606A4644219AD78D00AA3CD0 /* WJRouterConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A4643219AD78D00AA3CD0 /* WJRouterConfig.m */; };
 		C14CCDFE1D7C3C5B0093BF23 /* A3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14CCDFD1D7C3C5B0093BF23 /* A3ViewController.m */; };
@@ -60,18 +59,16 @@
 		606A4623219ACBE100AA3CD0 /* WJRouterJumper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJRouterJumper.m; sourceTree = "<group>"; };
 		606A4624219ACBE100AA3CD0 /* WJRouterMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJRouterMatcher.h; sourceTree = "<group>"; };
 		606A4626219ACBE100AA3CD0 /* IWJRouterInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWJRouterInterceptor.h; sourceTree = "<group>"; };
-		606A4628219ACBE100AA3CD0 /* WJRouterReturnNodeStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJRouterReturnNodeStack.h; sourceTree = "<group>"; };
-		606A4629219ACBE100AA3CD0 /* IWJReturnNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWJReturnNode.h; sourceTree = "<group>"; };
-		606A462A219ACBE100AA3CD0 /* WJRouterReturnNodeStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJRouterReturnNodeStack.m; sourceTree = "<group>"; };
+		606A4628219ACBE100AA3CD0 /* WJNodeContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJNodeContainer.h; sourceTree = "<group>"; };
+		606A462A219ACBE100AA3CD0 /* WJNodeContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJNodeContainer.m; sourceTree = "<group>"; };
 		606A462C219ACBE100AA3CD0 /* WJReturnNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJReturnNode.m; sourceTree = "<group>"; };
-		606A462D219ACBE100AA3CD0 /* WJRouterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJRouterNode.h; sourceTree = "<group>"; };
-		606A4630219ACBE100AA3CD0 /* WJRouterNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WJRouterNode.m; sourceTree = "<group>"; };
 		606A4631219ACBE100AA3CD0 /* WJReturnNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WJReturnNode.h; sourceTree = "<group>"; };
 		606A463F219ACD1C00AA3CD0 /* UIViewController+WJRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+WJRouter.h"; sourceTree = "<group>"; };
 		606A4640219ACD1C00AA3CD0 /* UIViewController+WJRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+WJRouter.m"; sourceTree = "<group>"; };
 		606A4642219AD78D00AA3CD0 /* WJRouterConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJRouterConfig.h; sourceTree = "<group>"; };
 		606A4643219AD78D00AA3CD0 /* WJRouterConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJRouterConfig.m; sourceTree = "<group>"; };
 		606B27901ED2CF4A009A4213 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		609036FE21AE43EC00FAB7E9 /* IWJNodeElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IWJNodeElement.h; sourceTree = "<group>"; };
 		60C4A28A219ACA4900CE4388 /* WJRouter.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = WJRouter.podspec; path = ../WJRouter.podspec; sourceTree = "<group>"; };
 		8733203653D2EA47769719FA /* Pods-WJUIRoutable-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WJUIRoutable-example.release.xcconfig"; path = "Pods/Target Support Files/Pods-WJUIRoutable-example/Pods-WJUIRoutable-example.release.xcconfig"; sourceTree = "<group>"; };
 		BEA1C5A93156C278BFE4A604 /* libPods-WJUIRoutable-example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WJUIRoutable-example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,11 +151,15 @@
 		606A4613219ACBE100AA3CD0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				606A4645219D184600AA3CD0 /* Other */,
 				606A4642219AD78D00AA3CD0 /* WJRouterConfig.h */,
 				606A4643219AD78D00AA3CD0 /* WJRouterConfig.m */,
 				606A461B219ACBE100AA3CD0 /* WJRouter.h */,
 				606A4622219ACBE100AA3CD0 /* WJRouter.m */,
+				606A4631219ACBE100AA3CD0 /* WJReturnNode.h */,
+				606A462C219ACBE100AA3CD0 /* WJReturnNode.m */,
+				606A4628219ACBE100AA3CD0 /* WJNodeContainer.h */,
+				606A462A219ACBE100AA3CD0 /* WJNodeContainer.m */,
+				609036FE21AE43EC00FAB7E9 /* IWJNodeElement.h */,
 				606A461F219ACBE100AA3CD0 /* WJRouterDefines.h */,
 				606A461E219ACBE100AA3CD0 /* WJRouterJumper.h */,
 				606A4623219ACBE100AA3CD0 /* WJRouterJumper.m */,
@@ -176,20 +177,6 @@
 			);
 			name = Classes;
 			path = ../Classes;
-			sourceTree = "<group>";
-		};
-		606A4645219D184600AA3CD0 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				606A4629219ACBE100AA3CD0 /* IWJReturnNode.h */,
-				606A4628219ACBE100AA3CD0 /* WJRouterReturnNodeStack.h */,
-				606A462A219ACBE100AA3CD0 /* WJRouterReturnNodeStack.m */,
-				606A4631219ACBE100AA3CD0 /* WJReturnNode.h */,
-				606A462C219ACBE100AA3CD0 /* WJReturnNode.m */,
-				606A462D219ACBE100AA3CD0 /* WJRouterNode.h */,
-				606A4630219ACBE100AA3CD0 /* WJRouterNode.m */,
-			);
-			path = Other;
 			sourceTree = "<group>";
 		};
 		B7923BDBD77D5CF07AFD2DA6 /* Frameworks */ = {
@@ -305,7 +292,7 @@
 				3D78A9591BE77AA300A7178E /* ViewController.m in Sources */,
 				3D78A9791BE77BA800A7178E /* BaseViewController.m in Sources */,
 				3D78A9561BE77AA300A7178E /* AppDelegate.m in Sources */,
-				606A4638219ACBE200AA3CD0 /* WJRouterReturnNodeStack.m in Sources */,
+				606A4638219ACBE200AA3CD0 /* WJNodeContainer.m in Sources */,
 				606A4641219ACD1C00AA3CD0 /* UIViewController+WJRouter.m in Sources */,
 				606A4637219ACBE200AA3CD0 /* WJRouterJumper.m in Sources */,
 				3D78A9531BE77AA300A7178E /* main.m in Sources */,
@@ -313,7 +300,6 @@
 				606A4633219ACBE200AA3CD0 /* WJRouterOptions.m in Sources */,
 				606A4636219ACBE200AA3CD0 /* WJRouter.m in Sources */,
 				606A4639219ACBE200AA3CD0 /* WJReturnNode.m in Sources */,
-				606A463B219ACBE200AA3CD0 /* WJRouterNode.m in Sources */,
 				606A4634219ACBE200AA3CD0 /* WJRouterParams.m in Sources */,
 				3D78A98A1BE77DB400A7178E /* A1ViewController.m in Sources */,
 				3D78A98D1BE77DD300A7178E /* A2ViewController.m in Sources */,

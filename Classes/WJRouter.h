@@ -42,6 +42,12 @@
 
 - (void)map:(NSString *)format toCallback:(WJRouterOpenCallback)callback;
 - (void)maps:(NSArray *)formats toCallback:(WJRouterOpenCallback)callback;
+
+
+- (void)markedReturn:(NSString*)returnToken viewController:(UIViewController*)viewController;
+- (void)execReturn:(NSString*)returnToken;
+- (BOOL)containsReturn:(NSString*)returnToken;
+
 /**
  映射多个路由节点
  
