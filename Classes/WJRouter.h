@@ -44,7 +44,7 @@
 - (void)maps:(NSArray *)formats toCallback:(WJRouterOpenCallback)callback;
 
 
-- (void)markedReturn:(NSString*)returnToken viewController:(UIViewController*)viewController;
+- (void)recordReturn:(NSString*)returnToken viewController:(UIViewController*)viewController;
 - (void)execReturn:(NSString*)returnToken;
 - (BOOL)containsReturn:(NSString*)returnToken;
 

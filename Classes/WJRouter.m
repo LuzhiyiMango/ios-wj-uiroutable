@@ -163,7 +163,7 @@ static WJRouter *sharedObject;
     return sharedObject;
 }
 
-- (void)markedReturn:(NSString*)returnToken viewController:(UIViewController*)viewController {
+- (void)recordReturn:(NSString*)returnToken viewController:(UIViewController*)viewController {
     if (viewController && returnToken) {
         WJReturnNode *node = [WJReturnNode node:viewController token:returnToken];
         [_returnNodeContainer addNode:node];
