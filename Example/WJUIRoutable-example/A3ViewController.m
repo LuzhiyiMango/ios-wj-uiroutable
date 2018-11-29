@@ -17,6 +17,7 @@
 
 -(void) btnOnClicked:(id) sender {
 //    [[WJUIRoutable sharedInstance] openReturnNode:NO];
+    [[WJRouter sharedInstance] execReturn:@"a1token"];
 }
 
 - (void)viewDidLoad {

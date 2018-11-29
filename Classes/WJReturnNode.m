@@ -10,10 +10,6 @@
 
 @implementation WJReturnNode
 
--(BOOL)isAvailable {
-    return _viewController != nil;
-}
-
 -(instancetype)initWithViewController:(UIViewController*)viewController token:(NSString*)token{
     self = [super init];
     if (self) {
