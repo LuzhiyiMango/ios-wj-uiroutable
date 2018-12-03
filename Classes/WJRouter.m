@@ -67,6 +67,14 @@ static WJRouter *sharedObject;
     [_jumper closeAll:animated];
 }
 
+- (WJRouterParams*)match:(NSString*)router {
+    return [_matcher match:router];
+}
+
+- (NSArray*)presentedViewControllers {
+    return [_jumper presentedViewControllers];
+}
+
 - (void)map:(NSString *)format toCallback:(WJRouterOpenCallback)callback {
     [self map:format toCallback:callback withOptions:nil];
 }

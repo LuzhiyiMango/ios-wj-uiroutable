@@ -39,6 +39,8 @@
 - (void)close:(BOOL) animated;
 - (void)closeAll:(BOOL) animated;
 
+- (WJRouterParams*)match:(NSString*)router;
+- (NSArray*)presentedViewControllers;
 
 - (void)map:(NSString *)format toCallback:(WJRouterOpenCallback)callback;
 - (void)maps:(NSArray *)formats toCallback:(WJRouterOpenCallback)callback;

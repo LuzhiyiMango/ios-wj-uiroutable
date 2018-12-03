@@ -41,6 +41,8 @@
 
 - (UIViewController*)rootViewController;
 
+- (NSArray*)presentedViewControllers;
+
 //后退到指定节点
 - (void)execReturnNode:(WJReturnNode*)returnNode;
 
