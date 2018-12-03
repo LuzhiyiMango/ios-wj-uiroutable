@@ -42,14 +42,12 @@
 - (WJRouterParams*)match:(NSString*)router;
 - (NSArray*)presentedViewControllers;
 
-- (void)map:(NSString *)format toCallback:(WJRouterOpenCallback)callback;
-- (void)maps:(NSArray *)formats toCallback:(WJRouterOpenCallback)callback;
-
-
 - (void)recordReturn:(NSString*)returnToken viewController:(UIViewController*)viewController;
 - (void)execReturn:(NSString*)returnToken;
 - (BOOL)containsReturn:(NSString*)returnToken;
 
+- (void)map:(NSString *)format toCallback:(WJRouterOpenCallback)callback;
+- (void)maps:(NSArray *)formats toCallback:(WJRouterOpenCallback)callback;
 /**
  映射多个路由节点
  
