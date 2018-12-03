@@ -1,34 +1,21 @@
 PODS:
-  - WJCommon/Core (2.0):
-    - WJJSON
-    - WJLoggingAPI (>= 2.0)
-  - WJCommon/Utils (2.0):
-    - WJJSON
-    - WJLoggingAPI (>= 2.0)
   - WJConfig (2.0):
     - WJLoggingAPI (>= 2.0)
-  - WJJSON (1.0.1)
   - WJLoggingAPI (2.0)
 
 DEPENDENCIES:
-  - WJCommon/Core
-  - WJCommon/Utils
   - WJConfig (>= 2.0)
   - WJLoggingAPI (>= 2.0)
 
 SPEC REPOS:
   https://github.com/yunhaiwu/ios-wj-framework-cocoapods-specs.git:
-    - WJCommon
     - WJConfig
-    - WJJSON
     - WJLoggingAPI
 
 SPEC CHECKSUMS:
-  WJCommon: 4cdee0e56ffdadc8749221d5f72a8dbba660860a
   WJConfig: deda632fdec1562c21e62be1acace6346c0cceca
-  WJJSON: e97aac774540ada0d8e76de7ffc8c724e4741d8e
   WJLoggingAPI: 183581a351d51f93ec9900a3cc5f2df15b907de3
 
-PODFILE CHECKSUM: 0d1c0363666605bf381ae51e440669149d990a01
+PODFILE CHECKSUM: a3e628139b26b4fbe45b1f9574651b6b6e0f617d
 
 COCOAPODS: 1.5.3
