@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = "WJRouter"
-    s.version          = '1.0'
+    s.version          = '3.1.0'
     s.summary          = "url导航模块."
 
     s.description      = <<-DESC
@@ -26,8 +26,6 @@ Pod::Spec.new do |s|
     s.public_header_files = 'Classes/*.h'
 
     s.dependency 'WJConfig'
-    s.dependency 'WJCommon/Core'
-    s.dependency 'WJCommon/Utils'
     s.dependency 'WJLoggingAPI', '>=2.0'
 
 end
