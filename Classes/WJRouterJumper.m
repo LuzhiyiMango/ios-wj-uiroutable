@@ -189,19 +189,26 @@
 
 - (UINavigationController*)currentAvailableNavigationController {
     UINavigationController *navigationController = nil;
-    UIViewController *presentingViewController = [self topPresentedViewController];
-    if (presentingViewController == [self rootViewController]) {
-        if ([presentingViewController isKindOfClass:[UITabBarController class]]) {
-            UIViewController *selectedVC = [(UITabBarController*)presentingViewController selectedViewController];
-            if ([selectedVC isKindOfClass:[UINavigationController class]]) {
-                navigationController = (UINavigationController*)selectedVC;
+    NSArray *presentedViewControllers = [self presentedViewControllers];
+    if ([presentedViewControllers count] > 0) {
+        for (NSUInteger i = presentedViewControllers.count - 1; i >= 0; i--) {
+            UIViewController *presentingViewController = presentedViewControllers[i];
+            if ([presentingViewController isKindOfClass:[UINavigationController class]]) {
+                navigationController = (UINavigationController*)presentingViewController;
+                break;
+            } else if (presentingViewController == [self rootViewController]) {
+                if ([presentingViewController isKindOfClass:[UITabBarController class]]) {
+                    UIViewController *selectedVC = [(UITabBarController*)presentingViewController selectedViewController];
+                    if ([selectedVC isKindOfClass:[UINavigationController class]]) {
+                        navigationController = (UINavigationController*)selectedVC;
+                        break;
+                    }
+                } else if ([presentingViewController isKindOfClass:[UINavigationController class]]) {
+                    navigationController = (UINavigationController*)presentingViewController;
+                    break;
+                }
             }
-        } else if ([presentingViewController isKindOfClass:[UINavigationController class]]) {
-            navigationController = (UINavigationController*)presentingViewController;
         }
-    }
-    if (!navigationController && [presentingViewController isKindOfClass:[UINavigationController class]]) {
-        navigationController = (UINavigationController*)presentingViewController;
     }
     return navigationController;
 }

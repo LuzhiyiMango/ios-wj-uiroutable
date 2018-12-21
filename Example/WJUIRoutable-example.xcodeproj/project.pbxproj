@@ -25,6 +25,9 @@
 		606A4639219ACBE200AA3CD0 /* WJReturnNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A462C219ACBE100AA3CD0 /* WJReturnNode.m */; };
 		606A4641219ACD1C00AA3CD0 /* UIViewController+WJRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A4640219ACD1C00AA3CD0 /* UIViewController+WJRouter.m */; };
 		606A4644219AD78D00AA3CD0 /* WJRouterConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 606A4643219AD78D00AA3CD0 /* WJRouterConfig.m */; };
+		6083E98C21C1101100453748 /* Simple1RouterInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6083E98B21C1101100453748 /* Simple1RouterInterceptor.m */; };
+		6083E98E21C1107C00453748 /* application_config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6083E98D21C1107C00453748 /* application_config.plist */; };
+		6083E99121C110DA00453748 /* Simple2RouterInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6083E99021C110DA00453748 /* Simple2RouterInterceptor.m */; };
 		C14CCDFE1D7C3C5B0093BF23 /* A3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C14CCDFD1D7C3C5B0093BF23 /* A3ViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +71,11 @@
 		606A4642219AD78D00AA3CD0 /* WJRouterConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WJRouterConfig.h; sourceTree = "<group>"; };
 		606A4643219AD78D00AA3CD0 /* WJRouterConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WJRouterConfig.m; sourceTree = "<group>"; };
 		606B27901ED2CF4A009A4213 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		6083E98A21C1101100453748 /* Simple1RouterInterceptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simple1RouterInterceptor.h; sourceTree = "<group>"; };
+		6083E98B21C1101100453748 /* Simple1RouterInterceptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Simple1RouterInterceptor.m; sourceTree = "<group>"; };
+		6083E98D21C1107C00453748 /* application_config.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = application_config.plist; sourceTree = "<group>"; };
+		6083E98F21C110DA00453748 /* Simple2RouterInterceptor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Simple2RouterInterceptor.h; sourceTree = "<group>"; };
+		6083E99021C110DA00453748 /* Simple2RouterInterceptor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Simple2RouterInterceptor.m; sourceTree = "<group>"; };
 		609036FE21AE43EC00FAB7E9 /* IWJNodeElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IWJNodeElement.h; sourceTree = "<group>"; };
 		60C4A28A219ACA4900CE4388 /* WJRouter.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = WJRouter.podspec; path = ../WJRouter.podspec; sourceTree = "<group>"; };
 		8733203653D2EA47769719FA /* Pods-WJUIRoutable-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WJUIRoutable-example.release.xcconfig"; path = "Pods/Target Support Files/Pods-WJUIRoutable-example/Pods-WJUIRoutable-example.release.xcconfig"; sourceTree = "<group>"; };
@@ -120,6 +128,10 @@
 				3D78A95D1BE77AA300A7178E /* Images.xcassets */,
 				3D78A95F1BE77AA300A7178E /* LaunchScreen.xib */,
 				3D78A9501BE77AA300A7178E /* Supporting Files */,
+				6083E98A21C1101100453748 /* Simple1RouterInterceptor.h */,
+				6083E98B21C1101100453748 /* Simple1RouterInterceptor.m */,
+				6083E98F21C110DA00453748 /* Simple2RouterInterceptor.h */,
+				6083E99021C110DA00453748 /* Simple2RouterInterceptor.m */,
 			);
 			path = "WJUIRoutable-example";
 			sourceTree = "<group>";
@@ -129,6 +141,7 @@
 			children = (
 				3D78A9511BE77AA300A7178E /* Info.plist */,
 				3D78A9521BE77AA300A7178E /* main.m */,
+				6083E98D21C1107C00453748 /* application_config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -256,6 +269,7 @@
 			files = (
 				3D78A9611BE77AA300A7178E /* LaunchScreen.xib in Resources */,
 				3D78A95E1BE77AA300A7178E /* Images.xcassets in Resources */,
+				6083E98E21C1107C00453748 /* application_config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +313,8 @@
 				C14CCDFE1D7C3C5B0093BF23 /* A3ViewController.m in Sources */,
 				606A4633219ACBE200AA3CD0 /* WJRouterOptions.m in Sources */,
 				606A4636219ACBE200AA3CD0 /* WJRouter.m in Sources */,
+				6083E98C21C1101100453748 /* Simple1RouterInterceptor.m in Sources */,
+				6083E99121C110DA00453748 /* Simple2RouterInterceptor.m in Sources */,
 				606A4639219ACBE200AA3CD0 /* WJReturnNode.m in Sources */,
 				606A4634219ACBE200AA3CD0 /* WJRouterParams.m in Sources */,
 				3D78A98A1BE77DB400A7178E /* A1ViewController.m in Sources */,

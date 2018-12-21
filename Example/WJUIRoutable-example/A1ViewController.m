@@ -14,7 +14,6 @@
 
 -(void) btnOnClicked:(id) sender {
     [[WJRouter sharedInstance] recordReturn:@"a1token" viewController:self];
-//    [[WJUIRoutable sharedInstance] settingReturnNode:self];
     [[WJRouter sharedInstance] open:@"a2viewcontroller" animated:YES extraParams:@{@"a1":@"a1"}];
 }
 

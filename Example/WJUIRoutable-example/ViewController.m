@@ -39,7 +39,13 @@
     
     [[WJRouter sharedInstance] map:@"a1viewcontroller" toController:[A1ViewController class]];
     [[WJRouter sharedInstance] map:@"a2viewcontroller" toController:[A2ViewController class]];
-    [[WJRouter sharedInstance] map:@"a3viewcontroller" toController:[A3ViewController class]];
+    [[WJRouter sharedInstance] map:@"a3viewcontroller" toController:[A3ViewController class] withOptions:[WJRouterOptions routerOptionsAsModal]];
+    
+    [[WJRouter sharedInstance] map:@"aaa" toCallback:^(NSDictionary *params) {
+        //        [[WJRouter sharedInstance] currentAvailableNavigationController] pushViewController:nil animated:NO];
+        
+        
+    }];
     
     self.table = [[NSHashTable alloc] initWithOptions:NSPointerFunctionsWeakMemory capacity:0];
     
