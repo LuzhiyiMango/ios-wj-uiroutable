@@ -74,10 +74,10 @@
 }
 
 - (void) close:(BOOL) animated {
-    UINavigationController *nav = [self currentAvailableNavigationController];
-    if (nav) {
-        if ([[nav viewControllers] count] > 1) {
-            [nav popViewControllerAnimated:animated];
+    UIViewController *topPresentedViewController = [self topPresentedViewController];
+    if ([topPresentedViewController isKindOfClass:[UINavigationController class]]) {
+        if ([[(UINavigationController*)topPresentedViewController viewControllers] count] > 1) {
+            [(UINavigationController*)topPresentedViewController popViewControllerAnimated:animated];
         } else {
             [self dismiss:animated completion:NULL];
         }
