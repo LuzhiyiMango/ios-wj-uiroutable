@@ -40,6 +40,9 @@
 - (void)closeAll:(BOOL) animated;
 
 - (WJRouterParams*)match:(NSString*)router;
+
+- (UIViewController*)matchViewController:(NSString*)router;
+
 - (NSArray*)presentedViewControllers;
 
 - (void)recordReturn:(NSString*)returnToken viewController:(UIViewController*)viewController;

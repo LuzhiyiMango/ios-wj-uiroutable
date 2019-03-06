@@ -71,6 +71,15 @@ static WJRouter *sharedObject;
     return [_matcher match:router];
 }
 
+- (UIViewController*)matchViewController:(NSString*)router {
+    UIViewController *targetViewController = nil;
+    WJRouterParams *params = [_matcher match:router];
+    if ([[params options] openClass]) {
+        targetViewController = [[[[params options] openClass] alloc] initWithRouterParams:[params getRouterParams]];
+    }
+    return targetViewController;
+}
+
 - (NSArray*)presentedViewControllers {
     return [_jumper presentedViewControllers];
 }
